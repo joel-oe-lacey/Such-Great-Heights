@@ -4,7 +4,7 @@ import './App.scss';
 
 function App() {
   return (
-    <section className="App">
+    <section className="app">
       <Login />
     </section>
   );
