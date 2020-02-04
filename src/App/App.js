@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login'
 import './App.scss';
+import { fetchAreasData } from '../helpers.js'
 
 export default class App extends Component {
   constructor() {
@@ -10,25 +11,12 @@ export default class App extends Component {
       areas: [],
     };
   }
+  
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas')
       .then(response => response.json())
-      .then(areasData => {
-        const promises = areasData.areas.map(area => {
-          return fetch(`http://localhost:3001${area.details}`)
-            .then(response => response.json())
-            .then(info => {
-              return {
-                shortName: area.area || area.name,
-                name: info.name,
-                description: info.about,
-              }
-            })
-        })
-        return Promise.all(promises)
-      })
-      .then(areas => this.setState({ areas })
-      )
+      .then(areasData => fetchAreasData(areasData))
+      .then(areas => this.setState({ areas }))
   }
 
   updateUser = userName => {
