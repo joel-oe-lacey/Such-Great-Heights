@@ -15,6 +15,22 @@ export default class Login extends Component {
         this.setState({ [e.target.name]: e.target.value })
     }
 
+    submitForm = e => {
+        //run validation in here, check state, if entered run below, else change placeholder (keep placeholder value in state?)
+        e.preventDefault();
+        const { updateUser } = this.props;
+        updateUser(this.state.user);
+        this.resetInputs();
+    }
+
+    resetInputs = () => {
+        this.setState({
+            name: '',
+            email: '',
+            travelingFor: 'business'
+        })
+    }
+
     //need a function on button click that does validation based on the state
 
     render() {
