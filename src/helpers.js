@@ -12,3 +12,19 @@ export const fetchAreasData = areasData => {
   })
   return Promise.all(promises)
 }
+
+export const fetchListingData = listingData => {
+  const promises = listingData.map(listing => {
+    return fetch(listing)
+      .then(response => response.json())
+      .then(listingInfo => {
+        return {
+          id: listingInfo.listing_id,
+          name: listingInfo.name,
+          address: listingInfo.address,
+          details: listingInfo.details
+        }
+      })
+  })
+  return Promise.all(promises)
+}

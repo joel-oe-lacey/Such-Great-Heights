@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login'
 import './App.scss';
-import { fetchAreasData } from '../helpers.js'
+import { fetchAreasData, fetchListingData } from '../helpers.js'
 
 export default class App extends Component {
   constructor() {
@@ -9,14 +9,21 @@ export default class App extends Component {
     this.state = {
       name: '',
       areas: [],
+      listingsUrl: ['http://localhost:3001/api/v1/listings/3',
+        'http://localhost:3001/api/v1/listings/44',
+        'http://localhost:3001/api/v1/listings/221',
+        'http://localhost:3001/api/v1/listings/744',
+        'http://localhost:3001/api/v1/listings/90',
+        'http://localhost:3001/api/v1/listings/310' ],
+      listings: []
     };
   }
   
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/areas')
-      .then(response => response.json())
-      .then(areasData => fetchAreasData(areasData))
-      .then(areas => this.setState({ areas }))
+    fetchListingData(this.state.listingsUrl)
+      .then(listings => {
+        this.setState({ listings })
+        console.log(this.state)})
   }
 
   updateUser = userName => {
