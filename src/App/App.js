@@ -27,8 +27,8 @@ export default class App extends Component {
         })
         return Promise.all(promises)
       })
-      .then(areas => this.setState({ areas }))
-      console.log(this.state);
+      .then(areas => this.setState({ areas })
+      )
   }
 
   updateUser = userName => {
