@@ -1,13 +1,22 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login'
 import './App.scss';
+import { fetchAreasData } from '../helpers.js'
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: ''
+      name: '',
+      areas: [],
     };
+  }
+  
+  componentDidMount() {
+    fetch('http://localhost:3001/api/v1/areas')
+      .then(response => response.json())
+      .then(areasData => fetchAreasData(areasData))
+      .then(areas => this.setState({ areas }))
   }
 
   updateUser = userName => {
