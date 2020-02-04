@@ -9,6 +9,10 @@ export default class App extends Component {
       name: ''
     };
   }
+  componentDidMount() {
+    
+
+  }
 
   updateUser = userName => {
     this.setState({ name: userName })
