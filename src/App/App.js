@@ -15,10 +15,10 @@ export default class App extends Component {
       // .then(areasData => console.log(areasData))
       .then(areasData => {
         const promises = areasData.areas.map(area => {
-          // return fetch(area.details)
-
-          console.log(`localhost:3000${area.details}`);
+          return fetch(`http://localhost:3001${area.details}`)
+            .then(response => response.json())
         })
+        console.log(promises);
       })
   }
 
