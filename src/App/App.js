@@ -19,14 +19,18 @@ export default class App extends Component {
             .then(response => response.json())
             .then(info => {
               return {
-                shortName: area.area,
+                shortName: area.area || area.name,
                 name: info.name,
                 description: info.about,
               }
             })
         })
-        console.log(promises);
+        // console.log(promises);
+        console.log(Promise.all(promises));
+        return Promise.all(promises)
       })
+      .then(areas => this.setState({ areas }))
+      console.log(this.state);
   }
 
   updateUser = userName => {
