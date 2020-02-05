@@ -4,7 +4,6 @@ import Area from '../Area/Area'
 
 
 const AreaContainer = (props) => {
-  // console.log(props.data);
   let areas = props.data.map(area => {
     return <Area
       shortName={area.shortName}
