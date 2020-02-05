@@ -1,3 +1,48 @@
 .nav-bar {
   font-family: 'Work Sans', sans-serif;
+  height: 8%;
+  border: 2px solid black;
+  display: grid;
+  grid-template-columns: 10% auto 20% 10% 10%;
+  grid-template-areas: 'logo . username view-areas log-out';
+  align-items: center;
+  grid-column-gap: 1%;
+  background-color: #555B6E;
+
+}
+
+.logo-nav {
+  grid-area: logo;
+  height: 80%;
+  width: 80%;
+  justify-self: end;
+  background-color: #BEE3DB;
+}
+
+.username {
+  grid-area: username;
+  justify-self: end;
+  font-size: 2em;
+  color: #BEE3DB;
+}
+
+.view-areas-btn {
+  grid-area: view-areas;
+}
+
+.log-out-btn {
+  grid-area: log-out;
+}
+
+.view-areas-btn,
+.log-out-btn {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  height: 40%;
+  margin-right: 2%;
+  border-radius: 4px;
+  background-color: #FAF9F9;
+  cursor: pointer;
+
 }

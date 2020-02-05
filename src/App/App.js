@@ -46,11 +46,11 @@ export default class App extends Component {
     //     { listings }
     //   </section>
     // )
-    // <AreaContainer data={this.state.areas} />
 
     return (
       <section className="app">
         <Nav userName={this.state.name}/>
+        <AreaContainer data={this.state.areas} />
       </section>
     )
   }
