@@ -5,12 +5,13 @@ import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
 import AreaContainer from '../AreaContainer/AreaContainer';
+import Nav from '../Nav/Nav';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      name: 'user1',
       areas: [],
       listingsUrl: ['http://localhost:3001/api/v1/listings/3',
         'http://localhost:3001/api/v1/listings/44',
@@ -48,7 +49,8 @@ export default class App extends Component {
 
     return (
       <section className="app">
-        <AreaContainer data={this.state.areas} />
+        // <AreaContainer data={this.state.areas} />
+        <Nav userName={this.state.name}/>
       </section>
     )
   }
