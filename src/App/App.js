@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Listing from '../Listing/Listing';
+import AreaContainer from '../AreaContainer/AreaContainer'
 import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js'
 
@@ -21,10 +22,13 @@ export default class App extends Component {
   }
   
   componentDidMount() {
-    fetchListingData(this.state.listingsUrl)
-      .then(listings => {
-        this.setState({ listings })
-        console.log(this.state)})
+    fetch('http://localhost:3001/api/v1/areas')
+      .then(response => response.json())
+      .then(areasData => fetchAreasData(areasData))
+      .then(areas => this.setState({ areas }))
+
+    // fetchListingData(this.state.listingsUrl)
+    //   .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
@@ -32,12 +36,18 @@ export default class App extends Component {
   }
 
   render() {
-    const listings = this.state.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} />
-    })
+    // const listings = this.state.listings.map(listing => {
+    //   return <Listing id={listing.id} name={listing.name} />
+    // })
+    // return (
+    //   <section className="app">
+    //     { listings }
+    //   </section>
+    // )
+
     return (
       <section className="app">
-        { listings }
+        <AreaContainer data={this.state.areas} />
       </section>
     )
   }

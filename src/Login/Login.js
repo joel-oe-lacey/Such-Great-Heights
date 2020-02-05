@@ -12,7 +12,26 @@ export default class Login extends Component {
     }
 
     handleChange = e => {
-        this.setState({ [e.target.name]: e.target.value })
+        const itemChanged = e.target.name;
+        this.setState({ 
+            [itemChanged]: e.target.value,
+            errors: {
+                [itemChanged]: this.state[itemChanged].length ? false : true,
+                ...this.state.errors
+
+                //swap error handling to 
+            },
+            // ...this.state
+        })
+
+        //wont work as it erases other state
+        //need to pull in other state and also set the related error to false 
+
+        //to type val based on e.target.name 
+
+
+        //make sure a value is entered 
+        //then in submit form can check if empty 
     }
 
     submitForm = e => {
