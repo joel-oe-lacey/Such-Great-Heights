@@ -21,8 +21,10 @@ export const fetchListingData = listingData => {
         return {
           id: listingInfo.listing_id,
           name: listingInfo.name,
-          address: listingInfo.address,
-          details: listingInfo.details
+          details: {
+            address: `${listingInfo.address.street}, ${listingInfo.address.zip}`,
+            ...listingInfo.details
+          }
         }
       })
   })
