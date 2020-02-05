@@ -30,8 +30,13 @@
 
 .view-listings-btn {
   grid-area: button;
-  width: 100px;
-  height: 50px;
+  width: 35%;
+  height: 35%;
   border-radius: 4px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  margin-right: 2%;
+  background-color: #FAF9F9;
   cursor: pointer;
 }
