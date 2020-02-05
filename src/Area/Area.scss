@@ -5,13 +5,28 @@
   margin: 10px;
   padding: 10px;
   display: grid;
+  grid-template-rows: 20% 10% 30% auto;
+  grid-template-areas:
+    'short-name'
+    'name'
+    'description'
+    'button'
 }
 
 .short-name {
+  grid-area: short-name;
+}
 
+.area-name {
+  grid-area: name;
+}
+
+.area-description {
+  grid-area: description;
 }
 
 .view-listings-btn {
+  grid-area: button;
   width: 100px;
   height: 50px;
   border-radius: 4px;
