@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Login from '../Login/Login'
 import './App.scss';
 import { fetchAreasData } from '../helpers.js'
+import Area from '../Area/Area'
+import AreaContainer from '../AreaContainer/AreaContainer'
 
 export default class App extends Component {
   constructor() {
@@ -11,7 +13,7 @@ export default class App extends Component {
       areas: [],
     };
   }
-  
+
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas')
       .then(response => response.json())
@@ -26,7 +28,8 @@ export default class App extends Component {
   render() {
     return (
       <section className="app">
-        <Login updateUser={this.updateUser} />
+        <AreaContainer data={this.state.areas}/>
+
       </section>
     )
   }

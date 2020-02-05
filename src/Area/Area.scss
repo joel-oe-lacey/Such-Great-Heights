@@ -1,0 +1,37 @@
+.area-card {
+  height: 300px;
+  width: 400px;
+  border: 3px solid black;
+  margin: 10px;
+  padding: 10px;
+  display: grid;
+  grid-template-rows: 20% 10% 30% auto;
+  grid-template-areas:
+    'short-name'
+    'name'
+    'description'
+    'button';
+  justify-items: center;
+  align-items: center;
+  grid-row-gap: 10px;
+}
+
+.short-name {
+  grid-area: short-name;
+}
+
+.area-name {
+  grid-area: name;
+}
+
+.area-description {
+  grid-area: description;
+}
+
+.view-listings-btn {
+  grid-area: button;
+  width: 100px;
+  height: 50px;
+  border-radius: 4px;
+  cursor: pointer;
+}
