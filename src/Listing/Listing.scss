@@ -1,0 +1,25 @@
+.listing {
+    width: 25%;
+    height: 50%;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    h3 {
+        text-align: center;
+        font-size: 1em;
+        font-weight: bold;
+    }
+
+    img {
+        width: 75%;
+        height: 50%;
+    }
+
+    button {
+        width: 75%;
+        height: 10%;
+    }
+}
