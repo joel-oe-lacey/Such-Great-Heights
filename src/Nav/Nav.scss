@@ -1,7 +1,6 @@
 .nav-bar {
   font-family: 'Work Sans', sans-serif;
   height: 8%;
-  border: 2px solid black;
   display: grid;
   grid-template-columns: 10% auto 20% 10% 10%;
   grid-template-areas: 'logo . username view-areas log-out';
