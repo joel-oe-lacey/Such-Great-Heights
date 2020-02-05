@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import Login from '../Login/Login'
+import Login from '../Login/Login';
+import Listing from '../Listing/Listing';
 import './App.scss';
-import { fetchAreasData } from '../helpers.js'
-import Area from '../Area/Area'
-import AreaContainer from '../AreaContainer/AreaContainer'
+import { fetchAreasData, fetchListingData } from '../helpers.js';
+import Area from '../Area/Area';
+import AreaContainer from '../AreaContainer/AreaContainer';
 
 export default class App extends Component {
   constructor() {
@@ -11,6 +12,13 @@ export default class App extends Component {
     this.state = {
       name: '',
       areas: [],
+      listingsUrl: ['http://localhost:3001/api/v1/listings/3',
+        'http://localhost:3001/api/v1/listings/44',
+        'http://localhost:3001/api/v1/listings/221',
+        'http://localhost:3001/api/v1/listings/744',
+        'http://localhost:3001/api/v1/listings/90',
+        'http://localhost:3001/api/v1/listings/310' ],
+      listings: []
     };
   }
 
@@ -19,6 +27,9 @@ export default class App extends Component {
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
       .then(areas => this.setState({ areas }))
+
+    // fetchListingData(this.state.listingsUrl)
+    //   .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
@@ -26,10 +37,18 @@ export default class App extends Component {
   }
 
   render() {
+    // const listings = this.state.listings.map(listing => {
+    //   return <Listing id={listing.id} name={listing.name} />
+    // })
+    // return (
+    //   <section className="app">
+    //     { listings }
+    //   </section>
+    // )
+
     return (
       <section className="app">
-        <AreaContainer data={this.state.areas}/>
-
+        <AreaContainer data={this.state.areas} />
       </section>
     )
   }
