@@ -10,7 +10,10 @@
     'short-name'
     'name'
     'description'
-    'button'
+    'button';
+  justify-items: center;
+  align-items: center;
+  grid-row-gap: 10px;
 }
 
 .short-name {
