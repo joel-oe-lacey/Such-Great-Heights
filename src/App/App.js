@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Listing from '../Listing/Listing';
-import AreaContainer from '../AreaContainer/AreaContainer'
 import './App.scss';
-import { fetchAreasData, fetchListingData } from '../helpers.js'
+import { fetchAreasData, fetchListingData } from '../helpers.js';
+import Area from '../Area/Area';
+import AreaContainer from '../AreaContainer/AreaContainer';
 
 export default class App extends Component {
   constructor() {
@@ -20,7 +21,7 @@ export default class App extends Component {
       listings: []
     };
   }
-  
+
   componentDidMount() {
     fetch('http://localhost:3001/api/v1/areas')
       .then(response => response.json())
