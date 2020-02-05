@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Login from '../Login/Login'
+import Login from '../Login/Login';
+import Listing from '../Listing/Listing';
 import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js'
 
@@ -31,9 +32,12 @@ export default class App extends Component {
   }
 
   render() {
+    const listings = this.state.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} />
+    })
     return (
       <section className="app">
-        <Login updateUser={this.updateUser} />
+        { listings }
       </section>
     )
   }
