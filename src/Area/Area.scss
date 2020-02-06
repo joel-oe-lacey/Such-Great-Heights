@@ -1,7 +1,6 @@
 .area-card {
-  height: 300px;
-  width: 400px;
-  border: 3px solid black;
+  height: 40%;
+  width: 20%;
   margin: 10px;
   padding: 10px;
   display: grid;
@@ -14,6 +13,11 @@
   justify-items: center;
   align-items: center;
   grid-row-gap: 10px;
+  font-family: 'Work Sans', sans-serif;
+  background-color: #FFD6BA;
+  border-radius: 5%;
+  border: 2px solid #555B6E;
+  box-shadow: 3px 3px #393b40;
 }
 
 .short-name {
@@ -25,13 +29,26 @@
 }
 
 .area-description {
+  margin-top: auto;
   grid-area: description;
+  // padding: 3%;
+  padding-top: 6%;
+  border-bottom: 2px solid #555B6E;
+  border-top: 2px solid #555B6E;
+  height: 150%;
+  text-align: center;
 }
 
 .view-listings-btn {
+  margin-top: 10%;
   grid-area: button;
-  width: 100px;
-  height: 50px;
+  width: 35%;
+  height: 35%;
   border-radius: 4px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  margin-right: 2%;
+  background-color: #FAF9F9;
   cursor: pointer;
 }

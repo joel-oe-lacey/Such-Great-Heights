@@ -5,13 +5,15 @@ import Details from '../Details/Details';
 import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
-// import AreaContainer from '../AreaContainer/AreaContainer';
+import AreaContainer from '../AreaContainer/AreaContainer';
+import Nav from '../Nav/Nav';
 
 export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      name: '',
+      name: 'user1',
+      tripType: 'vacation',
       areas: [],
       listingsUrl: ['http://localhost:3001/api/v1/listings/3',
         'http://localhost:3001/api/v1/listings/44',
@@ -29,8 +31,8 @@ export default class App extends Component {
       .then(areasData => fetchAreasData(areasData))
       .then(areas => this.setState({ areas }))
 
-    // fetchListingData(this.state.listingsUrl)
-    //   .then(listings => this.setState({ listings }))
+    fetchListingData(this.state.listingsUrl)
+      .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
@@ -38,20 +40,25 @@ export default class App extends Component {
   }
 
   render() {
-    // const listings = this.state.listings.map(listing => {
-    //   return <Listing id={listing.id} name={listing.name} />
-    // })
+    // let { listings } = this.state;
+
+    /* <Details id={listings[0] ? listings[0].id : 1} name={listings[0] ? listings[0].name : 'test'} details={listings[0] ? listings[0].details : {features: []}} /> */
+
     // return (
     //   <section className="app">
-    //     { listings }
+    //     <Nav userName={this.state.name}/>
+    //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
     //   </section>
     // )
-    // let { listings } = this.state;
+    
+    const listings = this.state.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} />
+    })
     
     return (
       <section className="app">
-        {/* <Details id={listings[0] ? listings[0].id : 1} name={listings[0] ? listings[0].name : 'test'} details={listings[0] ? listings[0].details : {features: []}} /> */}
-      </section>
+        { listings }
+       </section>
     )
   }
 }

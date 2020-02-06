@@ -2,4 +2,35 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: center;
+  // border: 2px solid red;
+  background-color: #89B0AE;
+  height: 100vh;
+  font-family: 'Work Sans', sans-serif;
+
+}
+
+.welcome-message {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5em;
+  background-color: #89B0AE;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding: 2%;
+  display: grid;
+  grid-auto-rows: 30% 30%;
+  grid-template-areas:
+    'h1'
+    'h3';
+    justify-items: center;
+    grid-row-gap: 25%;
+}
+
+.welcome-h1 {
+  grid-area: h1;
+}
+
+.message-h3 {
+  grid-area: h3;
 }
