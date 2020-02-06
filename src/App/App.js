@@ -72,9 +72,7 @@ export default class App extends Component {
     //   </section>
     // )
 
-    const listings = this.state.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} />
-    })
+
 
     // display login upon page load
     // upon succesful form submission, render AreasContainer
