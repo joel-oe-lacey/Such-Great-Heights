@@ -7,7 +7,7 @@ import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
-import { Route, NavLink } from 'react-router-dom'
+import { Route, NavLink, Switch } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 
 
@@ -66,11 +66,13 @@ export default class App extends Component {
     // upon 'View Details' click, render Details component
     return (
       <section className="app">
+      <Switch>
         <Route exact path='/' component={Login} />
+        <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
+      </Switch>
         <Route exact path='/areas' render={() =>
           <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
 }
-        <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
        </section>
     )
   }
