@@ -1,5 +1,7 @@
 import React from 'react';
 import './Nav.scss'
+import { Link } from 'react-router-dom'
+
 
 const Nav = ({ userName }) => {
   return (
@@ -7,7 +9,7 @@ const Nav = ({ userName }) => {
       <img className='logo-nav'></img>
       <h2 className='username'>welcome, {userName}!</h2>
       <button className='view-areas-btn'>View Areas</button>
-      <button className='log-out-btn'>Log Out</button>
+      <Link to='/'><button className='log-out-btn'>Log Out</button></Link>
     </section>
   )
 }
