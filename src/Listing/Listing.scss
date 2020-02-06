@@ -1,11 +1,14 @@
 .listing {
+    font-family: 'Work Sans', sans-serif;
     width: 25%;
     height: 50%;
-    border: 1px solid black;
+    border: 2px solid #555B6E;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    background-color: #FFD6BA;
+    border-radius: 5%;
 
     h3 {
         text-align: center;
@@ -16,10 +19,22 @@
     img {
         width: 75%;
         height: 50%;
+        border-radius: 3%;
     }
 
     button {
         width: 75%;
         height: 10%;
+        margin-top: 10%;
+        grid-area: button;
+        // width: 35%;
+        // height: 35%;
+        border-radius: 4px;
+        font-family: 'Work Sans', sans-serif;
+        font-weight: 700;
+        font-size: 1em;
+        margin-right: 2%;
+        background-color: #FAF9F9;
+        cursor: pointer;
     }
 }

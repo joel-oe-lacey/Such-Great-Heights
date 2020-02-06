@@ -30,8 +30,8 @@ export default class App extends Component {
       .then(areasData => fetchAreasData(areasData))
       .then(areas => this.setState({ areas }))
 
-    // fetchListingData(this.state.listingsUrl)
-    //   .then(listings => this.setState({ listings }))
+    fetchListingData(this.state.listingsUrl)
+      .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
@@ -39,20 +39,20 @@ export default class App extends Component {
   }
 
   render() {
-    // const listings = this.state.listings.map(listing => {
-    //   return <Listing id={listing.id} name={listing.name} />
-    // })
-    // return (
-    //   <section className="app">
-    //     { listings }
-    //   </section>
-    // )
-
+    const listings = this.state.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} />
+    })
     return (
       <section className="app">
-        <Nav userName={this.state.name}/>
-        <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
+        { listings }
       </section>
     )
+
+    // return (
+    //   <section className="app">
+    //     <Nav userName={this.state.name}/>
+    //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
+    //   </section>
+    // )
   }
 }
