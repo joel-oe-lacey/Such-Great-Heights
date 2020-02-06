@@ -12,6 +12,7 @@ export default class App extends Component {
     super();
     this.state = {
       name: 'user1',
+      tripType: 'vacation',
       areas: [],
       listingsUrl: ['http://localhost:3001/api/v1/listings/3',
         'http://localhost:3001/api/v1/listings/44',
@@ -50,7 +51,7 @@ export default class App extends Component {
     return (
       <section className="app">
         <Nav userName={this.state.name}/>
-        <AreaContainer data={this.state.areas} />
+        <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
       </section>
     )
   }
