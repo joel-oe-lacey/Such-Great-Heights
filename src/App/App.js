@@ -26,12 +26,32 @@ export default class App extends Component {
     fetch('http://localhost:3001/api/v1/areas')
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
-      .then(areas => this.setState({ areas }))
+      .then(areas => {
+        this.setState({ areas })
+        this.fetchListings('RiNo')})
   }
+  fetchListings(areaName) {
+    const currentArea = this.state.areas.find(area => {
+      return area.shortName === areaName;
+    })
+    const promises = currentArea.listings.map(listing => {
+      return fetch(`http://localhost:3001${listing}`)
+        .then(res => res.json())
+        .then(info => {return {
+          id: info.listing_id,
+          name: info.name,
+    }})
+  })
+  console.log(Promise.all(promises));
+  return Promise.all(promises)
+}
+
+
 
   updateUser = userName => {
     this.setState({ name: userName })
   }
+
 
   render() {
     // let { listings } = this.state;
