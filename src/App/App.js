@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Listing from '../Listing/Listing';
+import Details from '../Details/Details';
 import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
@@ -39,14 +40,9 @@ export default class App extends Component {
   }
 
   render() {
-    const listings = this.state.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} />
-    })
-    return (
-      <section className="app">
-        { listings }
-      </section>
-    )
+    // let { listings } = this.state;
+
+    /* <Details id={listings[0] ? listings[0].id : 1} name={listings[0] ? listings[0].name : 'test'} details={listings[0] ? listings[0].details : {features: []}} /> */
 
     // return (
     //   <section className="app">
@@ -54,5 +50,15 @@ export default class App extends Component {
     //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
     //   </section>
     // )
+    
+    const listings = this.state.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} />
+    })
+    
+    return (
+      <section className="app">
+        { listings }
+       </section>
+    )
   }
 }
