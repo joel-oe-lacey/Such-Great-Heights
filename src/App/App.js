@@ -27,9 +27,6 @@ export default class App extends Component {
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
       .then(areas => this.setState({ areas }))
-
-    // fetchListingData(this.state.listingsUrl)
-    //   .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
