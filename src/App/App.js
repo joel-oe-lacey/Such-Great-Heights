@@ -50,14 +50,21 @@ export default class App extends Component {
     //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
     //   </section>
     // )
-    
+
     const listings = this.state.listings.map(listing => {
       return <Listing id={listing.id} name={listing.name} />
     })
-    
+
+    // display login upon page load
+    // upon succesful form submission, render AreasContainer
+    // 'Log Out' click takes user to log in form
+    // 'View Areas' click takes user to AreasContainer
+    // upon 'View Listings' click display Listings component
+    // upon 'View Details' click, render Details component
     return (
       <section className="app">
-        { listings }
+        <Login />
+        <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
        </section>
     )
   }
