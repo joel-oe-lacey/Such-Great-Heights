@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Listing from '../Listing/Listing';
+import Details from '../Details/Details';
 import './App.scss';
 import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
-import AreaContainer from '../AreaContainer/AreaContainer';
+// import AreaContainer from '../AreaContainer/AreaContainer';
 
 export default class App extends Component {
   constructor() {
@@ -45,10 +46,11 @@ export default class App extends Component {
     //     { listings }
     //   </section>
     // )
-
+    // let { listings } = this.state;
+    
     return (
       <section className="app">
-        <AreaContainer data={this.state.areas} />
+        {/* <Details id={listings[0] ? listings[0].id : 1} name={listings[0] ? listings[0].name : 'test'} details={listings[0] ? listings[0].details : {features: []}} /> */}
       </section>
     )
   }
