@@ -27,10 +27,10 @@ export default class App extends Component {
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
       .then(areas => {
-        this.setState({ areas })
-        this.fetchListings('RiNo')})
+        this.setState({ areas })})
   }
-  fetchListings(areaName) {
+
+  fetchListings = (areaName) => {
     const currentArea = this.state.areas.find(area => {
       return area.shortName === areaName;
     })
@@ -40,10 +40,17 @@ export default class App extends Component {
         .then(info => {return {
           id: info.listing_id,
           name: info.name,
+          details: {
+            address: `${info.address.street}, ${info.address.zip}`,
+            ...info.details
+          }
+
     }})
   })
-  console.log(Promise.all(promises));
-  return Promise.all(promises)
+  Promise.all(promises).then(data => {
+    this.setState({ listings: data})
+
+  })
 }
 
 
@@ -82,9 +89,10 @@ export default class App extends Component {
         <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
       </Switch>
         <Route exact path='/areas' render={() =>
-          <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
+          <AreaContainer fetchListings={this.fetchListings} data={this.state.areas} tripType={this.state.tripType} />} />
+        <Route exact path='/listings' render={() =>
+          <AreaContainer listings={this.state.listings} tripType={this.state.tripType} />} />
 
-}
        </section>
     )
   }

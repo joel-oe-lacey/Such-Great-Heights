@@ -12,18 +12,14 @@ export default class AreaContainer extends Component {
       listings: [],
     };
   }
-  // componentDidMount() {
-  //   console.log(this.props.data[0].listingUrl);
-  //   fetchListingData(this.props.data[0].listingUrl)
-  //   .then(listings => this.setState({ listings }))
-  // }
+
   render() {
-    // console.log(this.props);
     let areas = this.props.data.map(area => {
       return <Area
         shortName={area.shortName}
         name={area.name}
         description={area.description}
+        fetchListings={this.props.fetchListings}
         />
     })
     return (
