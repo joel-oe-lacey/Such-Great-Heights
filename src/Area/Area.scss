@@ -17,6 +17,7 @@
   background-color: #FFD6BA;
   border-radius: 5%;
   border: 2px solid #555B6E;
+  box-shadow: 3px 3px #393b40;
 }
 
 .short-name {
@@ -28,10 +29,16 @@
 }
 
 .area-description {
+  margin-top: auto;
   grid-area: description;
+  padding: 3%;
+  border-bottom: 2px solid #555B6E;
+  border-top: 2px solid #555B6E;
+  // border-radius: 4%;
 }
 
 .view-listings-btn {
+  margin-top: 10%;
   grid-area: button;
   width: 35%;
   height: 35%;
