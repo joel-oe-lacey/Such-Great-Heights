@@ -1,0 +1,16 @@
+.carousel {
+    height: 40%;
+    width: 40%;
+    display: flex;
+    flex-flow: row wrap;
+
+    img {
+        height: 90%;
+        width: 100%;
+    }
+}
+
+.arrow-btn {
+    height: 10%;
+    width: 50%;
+}
