@@ -3,10 +3,13 @@ export const fetchAreasData = areasData => {
     return fetch(`http://localhost:3001${area.details}`)
       .then(response => response.json())
       .then(info => {
+        console.log(info);
         return {
-          shortName: area.area || area.name,
+          shortName: area.area,
           name: info.name,
           description: info.about,
+          listingUrl: info.listings,
+
         }
       })
   })

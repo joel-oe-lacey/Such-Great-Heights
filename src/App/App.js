@@ -18,13 +18,7 @@ export default class App extends Component {
       name: 'user1',
       tripType: 'vacation',
       areas: [],
-      listingsUrl: ['http://localhost:3001/api/v1/listings/3',
-        'http://localhost:3001/api/v1/listings/44',
-        'http://localhost:3001/api/v1/listings/221',
-        'http://localhost:3001/api/v1/listings/744',
-        'http://localhost:3001/api/v1/listings/90',
-        'http://localhost:3001/api/v1/listings/310' ],
-      listings: []
+      listings: [],
     };
   }
 
@@ -34,8 +28,8 @@ export default class App extends Component {
       .then(areasData => fetchAreasData(areasData))
       .then(areas => this.setState({ areas }))
 
-    fetchListingData(this.state.listingsUrl)
-      .then(listings => this.setState({ listings }))
+    // fetchListingData(this.state.listingsUrl)
+    //   .then(listings => this.setState({ listings }))
   }
 
   updateUser = userName => {
@@ -72,6 +66,7 @@ export default class App extends Component {
       </Switch>
         <Route exact path='/areas' render={() =>
           <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
+
 }
        </section>
     )
