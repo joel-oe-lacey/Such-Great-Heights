@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import { Link } from 'react-router-dom'
 
 export default class Login extends Component {
     constructor() {
@@ -13,25 +14,25 @@ export default class Login extends Component {
 
     handleChange = e => {
         const itemChanged = e.target.name;
-        this.setState({ 
+        this.setState({
             [itemChanged]: e.target.value,
             errors: {
                 [itemChanged]: this.state[itemChanged].length ? false : true,
                 ...this.state.errors
 
-                //swap error handling to 
+                //swap error handling to
             },
             // ...this.state
         })
 
         //wont work as it erases other state
-        //need to pull in other state and also set the related error to false 
+        //need to pull in other state and also set the related error to false
 
-        //to type val based on e.target.name 
+        //to type val based on e.target.name
 
 
-        //make sure a value is entered 
-        //then in submit form can check if empty 
+        //make sure a value is entered
+        //then in submit form can check if empty
     }
 
     submitForm = e => {
@@ -80,7 +81,7 @@ export default class Login extends Component {
                         <option value="vacation">Vacation</option>
                         <option value="other">Other</option>
                     </select>
-                    <button>Submit</button>
+                    <Link to='/areas'><button>Submit</button></Link>
                 </form>
             </section>
         )

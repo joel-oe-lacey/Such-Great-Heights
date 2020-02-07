@@ -7,6 +7,9 @@ import { fetchAreasData, fetchListingData } from '../helpers.js';
 import Area from '../Area/Area';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
+import { Route, NavLink, Switch } from 'react-router-dom'
+import { Link } from 'react-router-dom'
+
 
 export default class App extends Component {
   constructor() {
@@ -15,13 +18,7 @@ export default class App extends Component {
       name: 'user1',
       tripType: 'vacation',
       areas: [],
-      listingsUrl: ['http://localhost:3001/api/v1/listings/3',
-        'http://localhost:3001/api/v1/listings/44',
-        'http://localhost:3001/api/v1/listings/221',
-        'http://localhost:3001/api/v1/listings/744',
-        'http://localhost:3001/api/v1/listings/90',
-        'http://localhost:3001/api/v1/listings/310' ],
-      listings: []
+      listings: [],
     };
   }
 
@@ -29,15 +26,39 @@ export default class App extends Component {
     fetch('http://localhost:3001/api/v1/areas')
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
-      .then(areas => this.setState({ areas }))
-
-    fetchListingData(this.state.listingsUrl)
-      .then(listings => this.setState({ listings }))
+      .then(areas => {
+        this.setState({ areas })})
   }
+
+  fetchListings = (areaName) => {
+    const currentArea = this.state.areas.find(area => {
+      return area.shortName === areaName;
+    })
+    const promises = currentArea.listings.map(listing => {
+      return fetch(`http://localhost:3001${listing}`)
+        .then(res => res.json())
+        .then(info => {return {
+          id: info.listing_id,
+          name: info.name,
+          details: {
+            address: `${info.address.street}, ${info.address.zip}`,
+            ...info.details
+          }
+
+    }})
+  })
+  Promise.all(promises).then(data => {
+    this.setState({ listings: data})
+
+  })
+}
+
+
 
   updateUser = userName => {
     this.setState({ name: userName })
   }
+
 
   render() {
     // let { listings } = this.state;
@@ -50,14 +71,26 @@ export default class App extends Component {
     //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
     //   </section>
     // )
-    
-    const listings = this.state.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} />
-    })
-    
+
+
+
+    // display login upon page load
+    // upon succesful form submission, render AreasContainer
+    // 'Log Out' click takes user to log in form
+    // 'View Areas' click takes user to AreasContainer
+    // upon 'View Listings' click display Listings component
+    // upon 'View Details' click, render Details component
     return (
       <section className="app">
-        { listings }
+      <Switch>
+        <Route exact path='/' component={Login} />
+        <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
+      </Switch>
+        <Route exact path='/areas' render={() =>
+          <AreaContainer fetchListings={this.fetchListings} data={this.state.areas} tripType={this.state.tripType} />} />
+        <Route exact path='/listings' render={() =>
+          <AreaContainer listings={this.state.listings} tripType={this.state.tripType} />} />
+
        </section>
     )
   }
