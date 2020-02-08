@@ -1,7 +1,6 @@
 import React from 'react';
-import './Area.scss'
-import { Link } from 'react-router-dom'
-
+import './Area.scss';
+import { Link } from 'react-router-dom';
 
 const Area = (props) => {
     return (

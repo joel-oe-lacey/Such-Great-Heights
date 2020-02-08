@@ -3,7 +3,6 @@ export function fetchAreasData(areasData) {
     return fetch(`http://localhost:3001${area.details}`)
       .then(response => response.json())
       .then(info => {
-        console.log(info);
         return {
           shortName: area.area,
           name: info.name,
@@ -20,7 +19,6 @@ export function fetchAreasData(areasData) {
 
 
 export const fetchListingData = listingData => {
-  console.log(listingData);
   const promises = listingData.map(listing => {
     return fetch(`http://localhost:3001${listing}`)
       .then(response => response.json())
