@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Details from '../Details/Details';
 import './App.scss';
-import { fetchAreasData } from '../helpers.js';
+import { fetchAreasData, fetchListings } from '../helpers.js';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
 import { Route, NavLink, Switch } from 'react-router-dom'
@@ -25,30 +25,16 @@ export default class App extends Component {
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
       .then(areas => {
-        this.setState({ areas })})
-  }
+        this.setState({ areas })
+        fetchListings(this.state.areas)
+        .then(listings => this.setState({ listings }))
+      })
 
-  fetchListings = (id) => {
-    const currentArea = this.state.areas.find(area => {
-      return area.id === id;
-    })
-    const promises = currentArea.listings.map(listing => {
-      return fetch(`http://localhost:3001${listing}`)
-        .then(res => res.json())
-        .then(info => {return {
-          id: info.listing_id,
-          name: info.name,
-          details: {
-            address: `${info.address.street}, ${info.address.zip}`,
-            ...info.details
-          }
-
-      }})
-    })
-    Promise.all(promises).then(data => {
-      this.setState({ listings: data})
-
-    })
+    
+    //want to load all the listings at the start 
+    //store them in listings as an array of obj
+    //each obj has a key of areaID and a value of array of listings
+    
   }
 
   selectListing = id => {
@@ -70,9 +56,12 @@ export default class App extends Component {
         <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
       </Switch>
         <Route path='/areas' render={() =>
-          <AreaContainer fetchListings={this.fetchListings} data={this.state.areas} tripType={this.state.tripType} />} />
-        <Route exact path='/area/:id' render={() =>
-         <AreaContainer selectListing={this.selectListing} listings={this.state.listings} tripType={this.state.tripType} />} />
+          <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
+        <Route exact path='/area/:id' render={({ match }) => {
+          const selectedListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
+          return <AreaContainer selectListing={this.selectListing} listings={selectedListings} tripType={this.state.tripType} />
+          } 
+        } />
         } 
         <Route exact path='/details' render={() => 
           <Details {...this.state.chosenListing} />} />
