@@ -16,8 +16,7 @@ export default class AreaContainer extends Component {
 
   render() {
     let cards;
-    console.log(this.props);
- if (this.props.fetchListings) {
+   if (this.props.fetchListings) {
 
    cards = this.props.data.map(area => {
      return <Area
@@ -29,7 +28,7 @@ export default class AreaContainer extends Component {
    })
  } else {
    cards = this.props.listings.map(listing => {
-     return <Listing id={listing.id} name={listing.name} />
+     return <Listing id={listing.id} name={listing.name} selectListing={this.props.selectListing}/>
    })
  }
     return (
