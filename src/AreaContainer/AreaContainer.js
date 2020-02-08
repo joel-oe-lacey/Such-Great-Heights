@@ -13,15 +13,13 @@ export default class AreaContainer extends Component {
 
   render() {
     let cards;
-   if (this.props.fetchListings) {
-
+   if (!this.props.listings) {
    cards = this.props.data.map(area => {
      return <Area
      id={area.id}
      shortName={area.shortName}
      name={area.name}
      description={area.description}
-     fetchListings={this.props.fetchListings}
      />
    })
  } else {

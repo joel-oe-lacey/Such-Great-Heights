@@ -8,7 +8,7 @@ const Area = (props) => {
           <h2 className='short-name'>{props.shortName}</h2>
           <h3 className='area-name'>{props.name}</h3>
           <p className='area-description'>{props.description}</p>
-          <Link to={`/area/${props.id}`}><button onClick={() => props.fetchListings(props.id)} className='view-listings-btn'>View Listings</button></Link>
+          <Link to={`/area/${props.id}`}><button className='view-listings-btn'>View Listings</button></Link>
         </div>
     )
 }
