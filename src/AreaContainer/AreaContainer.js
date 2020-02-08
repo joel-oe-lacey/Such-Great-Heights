@@ -13,20 +13,21 @@ export default class AreaContainer extends Component {
 
   render() {
     let cards;
-   if (!this.props.listings) {
-   cards = this.props.data.map(area => {
-     return <Area
-     id={area.id}
-     shortName={area.shortName}
-     name={area.name}
-     description={area.description}
-     />
-   })
- } else {
-   cards = this.props.listings.map(listing => {
-     return <Listing id={listing.id} name={listing.name} selectListing={this.props.selectListing}/>
-   })
- }
+    if (!this.props.listings) {
+    cards = this.props.data.map(area => {
+      return <Area
+      id={area.id}
+      shortName={area.shortName}
+      name={area.name}
+      description={area.description}
+      />
+    })
+    } else {
+    cards = this.props.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} area_id={listing.area_id} />
+    })
+    } 
+
     return (
       <section>
       <div className='welcome-message'>

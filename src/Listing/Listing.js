@@ -1,15 +1,15 @@
 import React from 'react';
 import './Listing.scss'
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
-const Listing = ({ id, name, selectListing }) => {
+const Listing = ({ id, name, area_id }) => {
     return (
       <section className="listing">
         <h3>{name}</h3>
         <img src={`../../images/${id}_a.jpg`} alt={name} />
-        <Link to={`/details`}>
-          <button onClick={() => selectListing(id)}>View Details</button>
-        </Link>
+        <NavLink to={`/areas/${area_id}/listings/${id}`}>
+          <button>View Details</button>
+        </NavLink>
       </section>
     );
 }

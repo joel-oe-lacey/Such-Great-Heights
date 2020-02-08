@@ -5,7 +5,7 @@ import './App.scss';
 import { fetchAreasData, fetchListings } from '../helpers.js';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
-import { Route, NavLink, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -16,7 +16,6 @@ export default class App extends Component {
       tripType: 'vacation',
       areas: [],
       listings: [],
-      chosenListing: {}
     };
   }
 
@@ -55,16 +54,18 @@ export default class App extends Component {
         <Route exact path='/' component={Login} />
         <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
       </Switch>
-        <Route path='/areas' render={() =>
+        <Route exact path='/areas' render={() =>
           <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
-        <Route exact path='/area/:id' render={({ match }) => {
-          const selectedListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
-          return <AreaContainer selectListing={this.selectListing} listings={selectedListings} tripType={this.state.tripType} />
+        <Route exact path='/areas/:id' render={({ match }) => {
+          const areaListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
+          return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
           } 
         } />
         } 
-        <Route exact path='/details' render={() => 
-          <Details {...this.state.chosenListing} />} />
+        <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
+          return < Details listings={this.state.listings} match={match}/>
+          } 
+        }  />
       </section>
     )
   }

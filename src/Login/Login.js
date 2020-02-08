@@ -74,7 +74,7 @@ export default class Login extends Component {
                     />
                     <select
                         name="travelingFor"
-                        autofocus={this.state.travelingFor}
+                        autoFocus={this.state.travelingFor}
                         onChange={this.handleChange}
                     >
                         <option value="business">Business</option>

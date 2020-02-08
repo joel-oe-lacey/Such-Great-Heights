@@ -1,10 +1,18 @@
 import React from 'react';
 import './Details.scss';
 import Carousel from '../Carousel/Carousel'
+// import { withRouter } from 'react-router';
 
-const Details = ({ id, name, details: {address, beds, baths, cost_per_night, features}, addFavorite }) => {
+
+
+const Details = ({ listings, match })=> {
+    const { id, name, details: { address, beds, baths, cost_per_night, features }, addFavorite } = listings.find(listing => {
+        console.log(listing)
+        return listing.id === parseInt(match.params.listing_id)
+    })
+
     const uniqueFeatures = features.map(feature => {
-    return <li>{feature}</li>
+        return <li>{feature}</li>
     })
 
     return (
