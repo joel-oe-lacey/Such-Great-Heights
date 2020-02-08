@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './AreaContainer.scss'
 import Area from '../Area/Area'
-import { fetchListingData } from '../helpers.js';
 import Listing from '../Listing/Listing.js'
-
-
 
 export default class AreaContainer extends Component {
   constructor() {
@@ -16,22 +13,21 @@ export default class AreaContainer extends Component {
 
   render() {
     let cards;
-    console.log(this.props);
- if (this.props.fetchListings) {
+    if (!this.props.listings) {
+    cards = this.props.data.map(area => {
+      return <Area
+      id={area.id}
+      shortName={area.shortName}
+      name={area.name}
+      description={area.description}
+      />
+    })
+    } else {
+    cards = this.props.listings.map(listing => {
+      return <Listing id={listing.id} name={listing.name} area_id={listing.area_id} />
+    })
+    } 
 
-   cards = this.props.data.map(area => {
-     return <Area
-     shortName={area.shortName}
-     name={area.name}
-     description={area.description}
-     fetchListings={this.props.fetchListings}
-     />
-   })
- } else {
-   cards = this.props.listings.map(listing => {
-     return <Listing id={listing.id} name={listing.name} />
-   })
- }
     return (
       <section>
       <div className='welcome-message'>

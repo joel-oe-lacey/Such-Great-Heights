@@ -1,14 +1,11 @@
 import React, { Component } from 'react';
 import Login from '../Login/Login';
-import Listing from '../Listing/Listing';
 import Details from '../Details/Details';
 import './App.scss';
-import { fetchAreasData, fetchListingData } from '../helpers.js';
-import Area from '../Area/Area';
+import { fetchAreasData, fetchListings } from '../helpers.js';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
-import { Route, NavLink, Switch } from 'react-router-dom'
-import { Link } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 
 export default class App extends Component {
@@ -19,6 +16,7 @@ export default class App extends Component {
       tripType: 'vacation',
       areas: [],
       listings: [],
+      favorites: []
     };
   }
 
@@ -27,59 +25,32 @@ export default class App extends Component {
       .then(response => response.json())
       .then(areasData => fetchAreasData(areasData))
       .then(areas => {
-        this.setState({ areas })})
+        this.setState({ areas })
+        fetchListings(this.state.areas)
+        .then(listings => this.setState({ listings }))
+      })
+  }
+  
+  addFavorite = listing => {
+    if(!this.state.favorites.includes(listing)){
+      this.setState({ favorites: [...this.state.favorites, listing] })
+    }
   }
 
-  fetchListings = (areaName) => {
-    const currentArea = this.state.areas.find(area => {
-      return area.shortName === areaName;
+  selectListing = id => {
+    const listing = this.state.listings.find(listing => {
+      return listing.id === parseInt(id);
     })
-    const promises = currentArea.listings.map(listing => {
-      return fetch(`http://localhost:3001${listing}`)
-        .then(res => res.json())
-        .then(info => {return {
-          id: info.listing_id,
-          name: info.name,
-          details: {
-            address: `${info.address.street}, ${info.address.zip}`,
-            ...info.details
-          }
-
-    }})
-  })
-  Promise.all(promises).then(data => {
-    this.setState({ listings: data})
-
-  })
-}
-
-
+    this.setState({ chosenListing: listing })
+  }
 
   updateUser = userName => {
     this.setState({ name: userName })
   }
 
+  
 
   render() {
-    // let { listings } = this.state;
-
-    /* <Details id={listings[0] ? listings[0].id : 1} name={listings[0] ? listings[0].name : 'test'} details={listings[0] ? listings[0].details : {features: []}} /> */
-
-    // return (
-    //   <section className="app">
-    //     <Nav userName={this.state.name}/>
-    //     <AreaContainer data={this.state.areas} tripType={this.state.tripType} />
-    //   </section>
-    // )
-
-
-
-    // display login upon page load
-    // upon succesful form submission, render AreasContainer
-    // 'Log Out' click takes user to log in form
-    // 'View Areas' click takes user to AreasContainer
-    // upon 'View Listings' click display Listings component
-    // upon 'View Details' click, render Details component
     return (
       <section className="app">
       <Switch>
@@ -87,11 +58,22 @@ export default class App extends Component {
         <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
       </Switch>
         <Route exact path='/areas' render={() =>
-          <AreaContainer fetchListings={this.fetchListings} data={this.state.areas} tripType={this.state.tripType} />} />
-        <Route exact path='/listings' render={() =>
-          <AreaContainer listings={this.state.listings} tripType={this.state.tripType} />} />
-
-       </section>
+          <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
+        <Route exact path='/areas/:id' render={({ match }) => {
+          const areaListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
+          return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
+          } 
+        } />
+        } 
+        <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
+          return <Details addFavorite={this.addFavorite} listings={this.state.listings} match={match}/>
+          } 
+        }  />
+        <Route exact path='/favorites' render={() => {
+          return <AreaContainer listings={this.state.favorites} tripType={this.state.tripType} />
+        }
+        } />
+      </section>
     )
   }
 }
