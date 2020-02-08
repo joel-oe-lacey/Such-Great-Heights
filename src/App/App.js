@@ -28,9 +28,9 @@ export default class App extends Component {
         this.setState({ areas })})
   }
 
-  fetchListings = (areaName) => {
+  fetchListings = (id) => {
     const currentArea = this.state.areas.find(area => {
-      return area.shortName === areaName;
+      return area.id === id;
     })
     const promises = currentArea.listings.map(listing => {
       return fetch(`http://localhost:3001${listing}`)
@@ -69,10 +69,11 @@ export default class App extends Component {
         <Route exact path='/' component={Login} />
         <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
       </Switch>
-        <Route exact path='/areas' render={() =>
+        <Route path='/areas' render={() =>
           <AreaContainer fetchListings={this.fetchListings} data={this.state.areas} tripType={this.state.tripType} />} />
-        <Route exact path='/listings' render={() =>
-          <AreaContainer selectListing={this.selectListing} listings={this.state.listings} tripType={this.state.tripType} />} />
+        <Route exact path='/area/:id' render={() =>
+         <AreaContainer selectListing={this.selectListing} listings={this.state.listings} tripType={this.state.tripType} />} />
+        } 
         <Route exact path='/details' render={() => 
           <Details {...this.state.chosenListing} />} />
       </section>

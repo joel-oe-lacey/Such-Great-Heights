@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import './AreaContainer.scss'
 import Area from '../Area/Area'
-import { fetchListingData } from '../helpers.js';
 import Listing from '../Listing/Listing.js'
-
-
 
 export default class AreaContainer extends Component {
   constructor() {
@@ -20,6 +17,7 @@ export default class AreaContainer extends Component {
 
    cards = this.props.data.map(area => {
      return <Area
+     id={area.id}
      shortName={area.shortName}
      name={area.name}
      description={area.description}

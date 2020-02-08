@@ -4,16 +4,15 @@ export function fetchAreasData(areasData) {
       .then(response => response.json())
       .then(info => {
         return {
-          shortName: area.area,
+          id: info.id,
+          shortName: info.area,
           name: info.name,
           description: info.about,
-          // listings: fetchListingData(info.listings),
           listings: info.listings,
         }
       })
 
   })
-  // console.log(promises);
   return Promise.all(promises);
 }
 
