@@ -17,20 +17,26 @@ export function fetchAreasData(areasData) {
 }
 
 
-export const fetchListingData = listingData => {
-  const promises = listingData.map(listing => {
-    return fetch(`http://localhost:3001${listing}`)
-      .then(response => response.json())
-      .then(listingInfo => {
-        return {
-          id: listingInfo.listing_id,
-          name: listingInfo.name,
-          details: {
-            address: `${listingInfo.address.street}, ${listingInfo.address.zip}`,
-            ...listingInfo.details
+export const fetchListings = (stateAreas) => {
+  const listingProms = stateAreas.reduce((areaListings, area) => {
+    area.listings.forEach(listing => {
+      areaListings.push(fetch(`http://localhost:3001${listing}`)
+        .then(res => res.json())
+        .then(info => {
+          return {
+            id: info.listing_id,
+            area_id: info.area_id,
+            name: info.name,
+            details: {
+              address: `${info.address.street}, ${info.address.zip}`,
+              ...info.details
+            }
           }
-        }
-      })
-  })
-  return Promise.all(promises)
+        })
+      )
+    })
+    return areaListings
+  }, []);
+
+  return Promise.all(listingProms)
 }
