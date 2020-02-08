@@ -5,11 +5,9 @@ import Carousel from '../Carousel/Carousel'
 
 
 
-const Details = ({ listings, match })=> {
-    const { id, name, details: { address, beds, baths, cost_per_night, features }, addFavorite } = listings.find(listing => {
-        console.log(listing)
-        return listing.id === parseInt(match.params.listing_id)
-    })
+const Details = ({ listings, match, addFavorite })=> {
+    const listing = listings.find(listing => listing.id === parseInt(match.params.listing_id))
+    const { id, name, details: { address, beds, baths, cost_per_night, features }} = listing;
 
     const uniqueFeatures = features.map(feature => {
         return <li>{feature}</li>
@@ -19,7 +17,7 @@ const Details = ({ listings, match })=> {
         <div className='details-align'>
             <section className='details'>
                 <Carousel id={id} name={name} imgTags={['a','b','c']} />
-                <button className='details-fav' onClick={() => addFavorite(id)}>Add Favorite</button>
+                <button className='details-fav' onClick={() => addFavorite(listing)}>Add Favorite</button>
                 <ul className='details-info'>
                     <li>{name}</li>
                     <li>{address}</li>

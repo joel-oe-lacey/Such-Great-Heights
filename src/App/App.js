@@ -16,6 +16,7 @@ export default class App extends Component {
       tripType: 'vacation',
       areas: [],
       listings: [],
+      favorites: []
     };
   }
 
@@ -28,12 +29,12 @@ export default class App extends Component {
         fetchListings(this.state.areas)
         .then(listings => this.setState({ listings }))
       })
-
-    
-    //want to load all the listings at the start 
-    //store them in listings as an array of obj
-    //each obj has a key of areaID and a value of array of listings
-    
+  }
+  
+  addFavorite = listing => {
+    if(!this.state.favorites.includes(listing)){
+      this.setState({ favorites: [...this.state.favorites, listing] })
+    }
   }
 
   selectListing = id => {
@@ -46,6 +47,8 @@ export default class App extends Component {
   updateUser = userName => {
     this.setState({ name: userName })
   }
+
+  
 
   render() {
     return (
@@ -63,9 +66,13 @@ export default class App extends Component {
         } />
         } 
         <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
-          return < Details listings={this.state.listings} match={match}/>
+          return <Details addFavorite={this.addFavorite} listings={this.state.listings} match={match}/>
           } 
         }  />
+        <Route exact path='/favorites' render={() => {
+          return <AreaContainer listings={this.state.favorites} tripType={this.state.tripType} />
+        }
+        } />
       </section>
     )
   }

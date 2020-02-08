@@ -8,6 +8,7 @@ const Nav = ({ userName }) => {
     <section className='nav-bar'>
       <img className='logo-nav'></img>
       <h2 className='username'>{`welcome, ${userName}!`}</h2>
+      <NavLink to='/favorites'><button className='view-favorites-btn'>View Favorites</button></NavLink>
       <NavLink to='/areas'><button className='view-areas-btn'>View Areas</button></NavLink>
       <NavLink to='/'><button className='log-out-btn'>Log Out</button></NavLink>
     </section>
