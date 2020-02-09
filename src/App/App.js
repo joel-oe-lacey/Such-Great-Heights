@@ -15,7 +15,7 @@ export default class App extends Component {
       name: 'user1',
       tripType: 'vacation',
       areas: [],
-      listings: [],
+      listings: [{ "id": 1, "area_id": 1, "name":'', "details": {"features": [] } }],
       favorites: []
     };
   }
@@ -63,10 +63,14 @@ export default class App extends Component {
           const areaListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
           return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
           } 
-        } />
-        } 
+        } /> 
         <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
-          return <Details addFavorite={this.addFavorite} listings={this.state.listings} match={match}/>
+          console.log('hit route')
+          //this renders on mount, so component did mount doesn't run until after
+          //while as with areaContainer, it mounts the areaContainer 
+          //also just getting away with areaCOnt cause fetch is quick
+          //should refactor to handle undefined states
+          return <Details addFavorite={this.addFavorite} listings={this.state.listings} match={match} />
           } 
         }  />
         <Route exact path='/favorites' render={() => {
