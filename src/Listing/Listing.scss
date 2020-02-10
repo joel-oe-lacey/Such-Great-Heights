@@ -9,10 +9,11 @@
     align-items: center;
     background-color: #FFD6BA;
     border-radius: 5%;
+    margin: 1%;
 
     h3 {
         text-align: center;
-        font-size: 1em;
+        font-size: 1.5em;
         font-weight: bold;
     }
 
@@ -22,19 +23,18 @@
         border-radius: 3%;
     }
 
-    button {
-        width: 75%;
-        height: 10%;
-        margin-top: 10%;
-        grid-area: button;
-        // width: 35%;
-        // height: 35%;
-        border-radius: 4px;
-        font-family: 'Work Sans', sans-serif;
-        font-weight: 700;
-        font-size: 1em;
-        margin-right: 2%;
-        background-color: #FAF9F9;
-        cursor: pointer;
-    }
+}
+.view-details-btn {
+  width: 75%;
+  margin-top: 10%;
+  grid-area: button;
+  border-radius: 4px;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 700;
+  font-size: 1em;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-right: 2%;
+  background-color: #FAF9F9;
+  cursor: pointer;
 }
