@@ -8,7 +8,7 @@ const Listing = ({ id, name, area_id }) => {
         <h3>{name}</h3>
         <img src={`../../images/${id}_a.jpg`} alt={name} />
         <NavLink to={`/areas/${area_id}/listings/${id}`}>
-          <button>View Details</button>
+          <button className='view-details-btn'>View Details</button>
         </NavLink>
       </section>
     );

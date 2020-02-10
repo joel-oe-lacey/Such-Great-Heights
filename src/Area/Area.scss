@@ -1,10 +1,10 @@
 .area-card {
-  height: 40%;
+  height: 60%;
   width: 20%;
   margin: 10px;
   padding: 10px;
   display: grid;
-  grid-template-rows: 20% 10% 30% auto;
+  grid-template-rows: 5% 5% 40% 50%;;
   grid-template-areas:
     'short-name'
     'name'
@@ -37,12 +37,12 @@
   border-top: 2px solid #555B6E;
   height: 150%;
   text-align: center;
+  font-size: 1.4em;
 }
 
 .view-listings-btn {
   margin-top: 10%;
   grid-area: button;
-  width: 35%;
   height: 35%;
   border-radius: 4px;
   font-family: 'Work Sans', sans-serif;
