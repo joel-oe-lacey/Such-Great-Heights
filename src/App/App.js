@@ -30,11 +30,22 @@ export default class App extends Component {
         .then(listings => this.setState({ listings }))
       })
   }
-  
+
   addFavorite = listing => {
     if(!this.state.favorites.includes(listing)){
       this.setState({ favorites: [...this.state.favorites, listing] })
     }
+  }
+  removeFavorite = listing => {
+    // if (this.state.favorites.includes(listing)) {
+    //
+    // }
+    this.state.favorites.forEach(item => {
+      if (item === listing) {
+        this.state.favorites.pop(item)
+      }
+    })
+    console.log(this.state.favorites);
   }
 
   selectListing = id => {
@@ -48,7 +59,7 @@ export default class App extends Component {
     this.setState({ name: userName })
   }
 
-  
+
 
   render() {
     return (
@@ -62,12 +73,12 @@ export default class App extends Component {
         <Route exact path='/areas/:id' render={({ match }) => {
           const areaListings = this.state.listings.filter(listing => listing.area_id === parseInt(match.params.id))
           return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
-          } 
+          }
         } />
-        } 
+        }
         <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
-          return <Details addFavorite={this.addFavorite} listings={this.state.listings} match={match}/>
-          } 
+          return <Details addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} listings={this.state.listings} match={match}/>
+          }
         }  />
         <Route exact path='/favorites' render={() => {
           return <AreaContainer listings={this.state.favorites} tripType={this.state.tripType} />
