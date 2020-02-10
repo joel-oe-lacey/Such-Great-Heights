@@ -55,8 +55,6 @@ export default class App extends Component {
     this.setState({ name: userName })
   }
 
-
-
   render() {
     return (
       <section className="app">
