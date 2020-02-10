@@ -57,8 +57,9 @@ export default class Login extends Component {
         return (
             <section className="login-container">
                 <form className="login-form">
-                    <h1>Welcome, please login</h1>
+                    <h1 className='login-welcome'>Login</h1>
                     <input
+                        className='name-input'
                         type="text"
                         name="name"
                         placeholder="Name..."
@@ -66,13 +67,16 @@ export default class Login extends Component {
                         onChange={this.handleChange}
                     />
                     <input
+                        className='email-input'
                         type="text"
                         name="email"
                         placeholder="Email..."
                         value={this.state.email}
                         onChange={this.handleChange}
                     />
+                    <label className='type-label'>Reason for Traveling</label>
                     <select
+                        className='travel-input'
                         name="travelingFor"
                         autoFocus={this.state.travelingFor}
                         onChange={this.handleChange}
@@ -81,7 +85,7 @@ export default class Login extends Component {
                         <option value="vacation">Vacation</option>
                         <option value="other">Other</option>
                     </select>
-                    <Link to='/areas'><button>Submit</button></Link>
+                    <Link to='/areas' className='link-btn'><button className='log-in-btn'>Submit</button></Link>
                 </form>
             </section>
         )
