@@ -42,7 +42,6 @@ export default class App extends Component {
         this.state.favorites.pop(item)
       }
     })
-    console.log(this.state.favorites);
   }
 
   selectListing = id => {
