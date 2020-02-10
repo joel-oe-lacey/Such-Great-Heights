@@ -37,9 +37,6 @@ export default class App extends Component {
     }
   }
   removeFavorite = listing => {
-    // if (this.state.favorites.includes(listing)) {
-    //
-    // }
     this.state.favorites.forEach(item => {
       if (item === listing) {
         this.state.favorites.pop(item)
