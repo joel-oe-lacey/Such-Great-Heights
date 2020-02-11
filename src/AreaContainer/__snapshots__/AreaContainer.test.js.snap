@@ -1,0 +1,40 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AreaContainer should match the snapshot 1`] = `undefined`;
+
+exports[`AreaContainer should match the snapshot when there are props 1`] = `
+<section>
+  <div
+    className="welcome-message"
+  >
+    <h1
+      className="welcome-h1"
+    >
+      Welcome!
+    </h1>
+    <h3
+      className="message-h3"
+    >
+      We hope you find the perfect room for your 
+      vacation
+      . Please select an area to view it's listings.
+    </h3>
+  </div>
+  <section
+    className="area-card-container"
+  >
+    <Area
+      description="this is a description"
+      id={5}
+      name="name"
+      shortName="shortname"
+    />
+    <Area
+      description="this is a description2"
+      id={52}
+      name="name2"
+      shortName="shortnam2e"
+    />
+  </section>
+</section>
+`;
