@@ -40,8 +40,6 @@ export default class Login extends Component {
                 break;
         }
 
-        //call validate form from within this
-        //could also do this inline with an || operator to check state or current value  
         this.setState({ 
                 [inputName]: value,
                 formErrors: fieldPresentErr,
@@ -59,10 +57,6 @@ export default class Login extends Component {
         this.setState({ errorsDisp: true })
     }
 
-    //need a function on button click that does validation based on the state
-
-    //if formValid is false on click, render error messages
-    //
     render() {
         const submitBtn = this.state.formValid ? <Link to='/areas' className='log-in-btn'><button className='log-in-btn' onClick={this.submitForm}>Submit</button></Link> : <button className='log-in-btn' onClick={this.showErrors}>Submit</button>;
 
