@@ -20,16 +20,16 @@ const Details = ({ listings, match, addFavorite, removeFavorite })=> {
                 <button className='details-fav' onClick={() => addFavorite(listing)}>Add Favorite</button>
                 <button className='details-unfav' onClick={() => removeFavorite(listing)}>Remove Favorite</button>
                 <ul className='details-info'>
-                    <li className='details-list'>{name}</li>
-                    <li className='details-list'>{address}</li>
+                    <h3 className='details-list'>{name}</h3>
+                    <h4 className='details-list'>{address}</h4>
                     <li className='details-list'>{`Number of bedrooms: ${beds}`}</li>
                     <li className='details-list'>{`Number of bathrooms: ${baths}`}</li>
                     <li className='details-list'>{`Cost per night: $${cost_per_night}`}</li>
-                    <li className='details-list'> Unique Features
+                    <h4 className='unique-features'> Unique Features
                         <ul className='unique-features'>
                             {uniqueFeatures}
                         </ul>
-                    </li>
+                    </h4>
                 </ul>
             </section>
         </div>

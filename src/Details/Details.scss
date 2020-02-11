@@ -8,12 +8,13 @@
   height: 70%;
   display: grid;
   grid-template-columns: 25% 50% 25%;
-  grid-template-rows: 40% 20% 20% 20%;
+  grid-template-rows: 40% 15% 15% 15% 15%;
   grid-template-areas:
     '. carousel .'
     '. . .'
     'favorite details .'
-    'unfavorite details .';
+    'unfavorite details .'
+    '. unique .';
   justify-content: center;
   align-content: center;
   font-family: 'Work Sans', sans-serif;
@@ -52,13 +53,14 @@
 .details-info {
   grid-area: details;
   justify-self: center;
-  align-self: center;
+  align-self: flex-start;
 }
 
 .details-list {
+  margin: 10px;
 
 }
 
 .unique-features {
-
+  grid-area: unique;
 }
