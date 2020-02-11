@@ -9,6 +9,7 @@ export default class Login extends Component {
         this.state = {
             name:'',
             email:'',
+            travelingFor: 'business',
             formErrors: { name: 'Please enter a name', email: 'Please enter an email'},
             nameValid: false,
             emailValid: false,
@@ -19,7 +20,7 @@ export default class Login extends Component {
 
     submitForm = e => {
         const { updateUser } = this.props;
-        updateUser(this.state.name);
+        updateUser(this.state.name, this.state.travelingFor);
     }
 
     validateField = e => {
@@ -41,8 +42,8 @@ export default class Login extends Component {
         }
 
         //call validate form from within this
-        //could also do this inline with an || operator to check state or current value  
-        this.setState({ 
+        //could also do this inline with an || operator to check state or current value
+        this.setState({
                 [inputName]: value,
                 formErrors: fieldPresentErr,
                 emailValid,
@@ -95,9 +96,9 @@ export default class Login extends Component {
                         autoFocus={this.state.travelingFor}
                         onChange={this.validateField}
                     >
-                        <option value="business">Business</option>
+                        <option value="business trip">Business</option>
                         <option value="vacation">Vacation</option>
-                        <option value="other">Other</option>
+                        <option value="trip">Other</option>
                     </select>
                     {errors}
                     {submitBtn}

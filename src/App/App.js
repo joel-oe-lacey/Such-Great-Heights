@@ -42,8 +42,13 @@ export default class App extends Component {
     })
   }
 
-  updateUser = userName => {
-    this.setState({ name: userName })
+  updateUser = (userName, type) => {
+    if (type === 'business') {
+        type = 'business trip'
+    } else if (type === 'other') {
+        type = 'trip'
+    }
+    this.setState({ name: userName, tripType: type})
   }
 
   render() {
