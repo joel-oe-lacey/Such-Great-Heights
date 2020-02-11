@@ -1,3 +1,14 @@
+export const fetchData = () => {
+  return fetch('http://localhost:3001/api/v1/areas')
+        .then(response => {
+          if (!response.ok) {
+            throw Error('Error while fetching, 200 level status code not received')
+          }
+          return response.json();
+        })
+    .then(areasData => fetchAreasData(areasData))
+}
+
 export function fetchAreasData(areasData) {
   const promises = areasData.areas.map(area => {
     return fetch(`http://localhost:3001${area.details}`)
@@ -15,7 +26,6 @@ export function fetchAreasData(areasData) {
   })
   return Promise.all(promises);
 }
-
 
 export const fetchListings = (stateAreas) => {
   const listingProms = stateAreas.reduce((areaListings, area) => {

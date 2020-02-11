@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import Login from '../Login/Login';
 import Details from '../Details/Details';
 import './App.scss';
-import { fetchAreasData, fetchListings } from '../helpers.js';
+import { fetchAreasData, fetchListings, fetchData } from '../helpers.js';
 import AreaContainer from '../AreaContainer/AreaContainer';
 import Nav from '../Nav/Nav';
 import { Route, Switch } from 'react-router-dom'
@@ -21,14 +21,12 @@ export default class App extends Component {
   }
 
   componentDidMount() {
-    fetch('http://localhost:3001/api/v1/areas')
-      .then(response => response.json())
-      .then(areasData => fetchAreasData(areasData))
-      .then(areas => {
-        this.setState({ areas })
-        fetchListings(this.state.areas)
-        .then(listings => this.setState({ listings }))
-      })
+    fetchData()
+    .then(areas => {
+      this.setState({ areas })
+      fetchListings(this.state.areas)
+      .then(listings => this.setState({ listings }))
+    })
   }
 
   addFavorite = listing => {
@@ -43,13 +41,6 @@ export default class App extends Component {
       }
     })
   }
-
-  // selectListing = id => {
-  //   const listing = this.state.listings.find(listing => {
-  //     return listing.id === parseInt(id);
-  //   })
-  //   this.setState({ chosenListing: listing })
-  // }
 
   updateUser = userName => {
     this.setState({ name: userName })
