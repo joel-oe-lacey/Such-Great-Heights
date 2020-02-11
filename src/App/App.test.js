@@ -10,8 +10,6 @@ describe ('App', ()=> {
   let wrapper;
 
   beforeEach(() => {
-    // wrapper = shallow(<App />);
-
     fetchData.mockImplementation(() => {
     return Promise.resolve([{
     id: 590,
@@ -72,6 +70,12 @@ describe ('App', ()=> {
     expect(wrapper.state()).toEqual(updatedState)
   })
 
+  it('should match the snapshot', () => {
+  const wrapper = shallow(<App />);
+
+  expect(wrapper).toMatchSnapshot();
+});
+
   it('should remove a favorite from state when removeFav is called', () => {
     wrapper = shallow(<App />);
     let mockListing = {id: 123, name: 'cool looking house'}
@@ -108,7 +112,5 @@ describe ('App', ()=> {
   it('should retrieve ideas after mounting', () => {
     wrapper = shallow(<App />);
     expect(fetchData).toHaveBeenCalled();
-    // expect(fetchListings).toHaveBeenCalled();
   });
-
 });
