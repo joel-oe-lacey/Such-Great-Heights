@@ -66,13 +66,6 @@
 
 }
 
-
-.link-btn {
-  // grid-area: login-button;
-  justify-self: center;
-  // align-self: center;
-
-}
 .log-in-btn {
   grid-area: login-button;
   border-radius: 4px;
@@ -85,6 +78,10 @@
   padding-left: 20%;
   padding-top: 5%;
   padding-bottom: 5%;
+  text-decoration: none;
+  text-align: center;
+  align-self: center;
+  color: black;
 }
 
 .form-errors {

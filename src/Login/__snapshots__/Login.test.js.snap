@@ -34,12 +34,13 @@ exports[`Login should equal snapshot  1`] = `
       Reason for Traveling
     </label>
     <select
+      autoFocus="business"
       className="travel-input"
       name="travelingFor"
       onChange={[Function]}
     >
       <option
-        value="business"
+        value="business trip"
       >
         Business
       </option>
@@ -49,7 +50,7 @@ exports[`Login should equal snapshot  1`] = `
         Vacation
       </option>
       <option
-        value="other"
+        value="trip"
       >
         Other
       </option>
