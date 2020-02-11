@@ -1,6 +1,8 @@
 import React from 'react';
 import './Details.scss';
 import Carousel from '../Carousel/Carousel'
+import PropTypes from 'prop-types';
+
 // import { withRouter } from 'react-router';
 
 
@@ -38,3 +40,10 @@ const Details = ({ listings, match, addFavorite, removeFavorite })=> {
 }
 
 export default Details;
+
+Details.propTypes = {
+  listings: PropTypes.array,
+  match: PropTypes.object,
+  addFavorite: PropTypes.func,
+  removeFavorite: PropTypes.func
+};
