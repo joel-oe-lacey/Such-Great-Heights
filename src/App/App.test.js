@@ -49,10 +49,11 @@ describe ('App', ()=> {
     wrapper.instance().removeFavorite(mockListing);
     expect(wrapper.state()).toEqual(updatedState);
   })
-  
+
   it('should update state.name when updateUser is invoked', () => {
     wrapper.instance().setState({});
     wrapper.instance().updateUser('user123');
     expect(wrapper.state()).toEqual({areas: [], favorites: [], listings: [], name: 'user123', tripType: 'vacation'})
   })
+
 })

@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Area should match the snapshot 1`] = `
+<div
+  className="area-card"
+>
+  <h2
+    className="short-name"
+  />
+  <h3
+    className="area-name"
+  />
+  <p
+    className="area-description"
+  />
+  <NavLink
+    to="/areas/undefined"
+  >
+    <button
+      className="view-listings-btn"
+    >
+      View Listings
+    </button>
+  </NavLink>
+</div>
+`;
+
+exports[`Area should match the snapshot when there are props 1`] = `
+<div
+  className="area-card"
+>
+  <h2
+    className="short-name"
+  >
+    RiNo
+  </h2>
+  <h3
+    className="area-name"
+  >
+    River North
+  </h3>
+  <p
+    className="area-description"
+  >
+    this is an area in denver
+  </p>
+  <NavLink
+    to="/areas/5"
+  >
+    <button
+      className="view-listings-btn"
+    >
+      View Listings
+    </button>
+  </NavLink>
+</div>
+`;
