@@ -105,8 +105,8 @@ describe ('App', ()=> {
   it('should update state.name when updateUser is invoked', () => {
     wrapper = shallow(<App />);
     wrapper.instance().setState({});
-    wrapper.instance().updateUser('user123');
-    expect(wrapper.state()).toEqual({areas: [], favorites: [], listings: [{area_id: 1,details: {features: [], }, id: 1,name: "", }], name: 'user123', tripType: 'vacation'})
+    wrapper.instance().updateUser('user123', 'vacation');
+    expect(wrapper.state()).toEqual({ areas: [], favorites: [], listings: [{ area_id: 1, details: { features: [], }, id: 1, name: "", }], name: 'user123', tripType: 'vacation'})
   })
 
   it('should retrieve ideas after mounting', () => {
