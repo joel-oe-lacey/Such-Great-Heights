@@ -1,6 +1,11 @@
 export const fetchData = () => {
   return fetch('http://localhost:3001/api/v1/areas')
-    .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            throw Error('Error while fetching, 200 level status code not received')
+          }
+          return response.json();
+        })
     .then(areasData => fetchAreasData(areasData))
 }
 

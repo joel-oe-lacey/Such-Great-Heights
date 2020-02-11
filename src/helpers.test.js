@@ -22,4 +22,14 @@ describe('API calls', () => {
     expect(fetchData()).resolves.toEqual(mockResponse)
   })
 
+  it('should return an error if the promise is rejected', () => {
+  window.fetch = jest.fn().mockImplementation(() => {
+    return Promise.resolve({
+      ok: false
+    })
+  });
+
+  expect(fetchData()).rejects.toEqual(Error('Error fetching ideas'));
+});
+
 })
