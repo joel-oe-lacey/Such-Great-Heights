@@ -1,7 +1,7 @@
 ### Such Great Heights
 The goal of this project was to create a React app where the user can view vacation rental properties in the Denver area.
 
-##### Issues 
+#### Issues 
 Issues are open representing pieces of the iterations we did completely finish or functionality we would eventually like to implement/refactor to improve this project. 
 
 #### Learning Goals 
