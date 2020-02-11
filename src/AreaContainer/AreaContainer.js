@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './AreaContainer.scss'
 import Area from '../Area/Area'
 import Listing from '../Listing/Listing.js'
+import PropTypes from 'prop-types';
 
 const AreaContainer = (props) => {
     let cards;
@@ -35,3 +36,8 @@ const AreaContainer = (props) => {
   }
 
   export default AreaContainer;
+
+  AreaContainer.propTypes = {
+    data: PropTypes.array,
+    tripType: PropTypes.string,
+};

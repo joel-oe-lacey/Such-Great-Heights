@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Listing should match the snapshot 1`] = `
+<section
+  className="listing"
+>
+  <h3 />
+  <img
+    src="../../images/undefined_a.jpg"
+  />
+  <NavLink
+    to="/areas/undefined/listings/undefined"
+  >
+    <button
+      className="view-details-btn"
+    >
+      View Details
+    </button>
+  </NavLink>
+</section>
+`;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormErrors } from './FormErrors';
 
@@ -9,6 +10,7 @@ export default class Login extends Component {
         this.state = {
             name:'',
             email:'',
+            travelingFor: 'business',
             formErrors: { name: 'Please enter a name', email: 'Please enter an email'},
             nameValid: false,
             emailValid: false,
@@ -19,7 +21,7 @@ export default class Login extends Component {
 
     submitForm = e => {
         const { updateUser } = this.props;
-        updateUser(this.state.name);
+        updateUser(this.state.name, this.state.travelingFor);
     }
 
     validateField = e => {
@@ -40,7 +42,7 @@ export default class Login extends Component {
                 break;
         }
 
-        this.setState({ 
+        this.setState({
                 [inputName]: value,
                 formErrors: fieldPresentErr,
                 emailValid,
@@ -89,9 +91,9 @@ export default class Login extends Component {
                         autoFocus={this.state.travelingFor}
                         onChange={this.validateField}
                     >
-                        <option value="business">Business</option>
+                        <option value="business trip">Business</option>
                         <option value="vacation">Vacation</option>
-                        <option value="other">Other</option>
+                        <option value="trip">Other</option>
                     </select>
                     {errors}
                     {submitBtn}
@@ -100,3 +102,7 @@ export default class Login extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    updateUser: PropTypes.func,
+};

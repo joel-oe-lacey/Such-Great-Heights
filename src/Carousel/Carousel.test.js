@@ -19,7 +19,7 @@ describe('Carousel', () => {
 
         wrapper.instance().changeImg('left');
 
-        expect(wrapper.state('imageIndex')).toEqual(3);
+        expect(wrapper.state('imageIndex')).toEqual(2);
     });
 
     it('Should add to image index for right click', () => {
