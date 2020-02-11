@@ -1,16 +1,23 @@
 .carousel {
-    height: 40%;
-    width: 40%;
+    height: 100%;
+    width: 100%;
     display: flex;
     flex-flow: row wrap;
+}
 
-    img {
-        height: 90%;
-        width: 100%;
-    }
+.images {
+  height: 100%;
+  width: 100%;
+  border-radius: 3%;
+
 }
 
 .arrow-btn {
     height: 10%;
-    width: 50%;
+    width: 45%;
+    margin: 2%;
+    border-radius: 4%;
+    background-color: #FFD6BA;
+    font-size: 1.5em;
+    cursor: pointer;
 }

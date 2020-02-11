@@ -14,19 +14,19 @@ const Details = ({ listings, match, addFavorite, removeFavorite })=> {
     })
 
     return (
-        <div className='details-align'>
-            <section className='details'>
-                <Carousel id={id} name={name} imgTags={['a','b','c']} />
+        <div className='details-container'>
+            <section className='details-card'>
+                <Carousel className='carousel' id={id} name={name} imgTags={['a','b','c']} />
                 <button className='details-fav' onClick={() => addFavorite(listing)}>Add Favorite</button>
                 <button className='details-unfav' onClick={() => removeFavorite(listing)}>Remove Favorite</button>
                 <ul className='details-info'>
-                    <li>{name}</li>
-                    <li>{address}</li>
-                    <li>{`Number of bedrooms: ${beds}`}</li>
-                    <li>{`Number of bathrooms: ${baths}`}</li>
-                    <li>{`Cost per night: $${cost_per_night}`}</li>
-                    <li> Unique Features
-                        <ul>
+                    <li className='details-list'>{name}</li>
+                    <li className='details-list'>{address}</li>
+                    <li className='details-list'>{`Number of bedrooms: ${beds}`}</li>
+                    <li className='details-list'>{`Number of bathrooms: ${baths}`}</li>
+                    <li className='details-list'>{`Cost per night: $${cost_per_night}`}</li>
+                    <li className='details-list'> Unique Features
+                        <ul className='unique-features'>
                             {uniqueFeatures}
                         </ul>
                     </li>
