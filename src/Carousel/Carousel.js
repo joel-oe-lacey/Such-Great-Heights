@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Carousel.scss';
 import Arrow from './Arrow/Arrow';
+import PropTypes from 'prop-types';
 
 export default class Carousel extends Component {
     constructor(props) {
@@ -33,3 +34,10 @@ export default class Carousel extends Component {
         </section>
     }
 }
+
+Carousel.propTypes = {
+  className: PropTypes.string,
+  id: PropTypes.number,
+  name: PropTypes.string,
+  imgTags: PropTypes.array
+};

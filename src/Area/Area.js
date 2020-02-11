@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 
 
 const Area = (props) => {
-  console.log(props);
     return (
         <div className='area-card'>
           <h2 className='short-name'>{props.shortName}</h2>
