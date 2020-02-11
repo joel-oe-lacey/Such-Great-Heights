@@ -44,12 +44,12 @@ export default class App extends Component {
     })
   }
 
-  selectListing = id => {
-    const listing = this.state.listings.find(listing => {
-      return listing.id === parseInt(id);
-    })
-    this.setState({ chosenListing: listing })
-  }
+  // selectListing = id => {
+  //   const listing = this.state.listings.find(listing => {
+  //     return listing.id === parseInt(id);
+  //   })
+  //   this.setState({ chosenListing: listing })
+  // }
 
   updateUser = userName => {
     this.setState({ name: userName })
@@ -69,7 +69,7 @@ export default class App extends Component {
           return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
           }
         } />
-    
+
         <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
           return <Details addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} listings={this.state.listings} match={match}/>
           }

@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav should match the snapshot 1`] = `
+<section
+  className="nav-bar"
+>
+  <img
+    className="logo-nav"
+  />
+  <h2
+    className="username"
+  >
+    welcome, undefined!
+  </h2>
+  <NavLink
+    to="/favorites"
+  >
+    <button
+      className="view-favorites-btn"
+    >
+      View Favorites
+    </button>
+  </NavLink>
+  <NavLink
+    to="/areas"
+  >
+    <button
+      className="view-areas-btn"
+    >
+      View Areas
+    </button>
+  </NavLink>
+  <NavLink
+    to="/"
+  >
+    <button
+      className="log-out-btn"
+    >
+      Log Out
+    </button>
+  </NavLink>
+</section>
+`;
+
+exports[`Nav should match the snapshot when there are props 1`] = `
+<section
+  className="nav-bar"
+>
+  <img
+    className="logo-nav"
+  />
+  <h2
+    className="username"
+  >
+    welcome, user123!
+  </h2>
+  <NavLink
+    to="/favorites"
+  >
+    <button
+      className="view-favorites-btn"
+    >
+      View Favorites
+    </button>
+  </NavLink>
+  <NavLink
+    to="/areas"
+  >
+    <button
+      className="view-areas-btn"
+    >
+      View Areas
+    </button>
+  </NavLink>
+  <NavLink
+    to="/"
+  >
+    <button
+      className="log-out-btn"
+    >
+      Log Out
+    </button>
+  </NavLink>
+</section>
+`;
