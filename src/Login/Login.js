@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { FormErrors } from './FormErrors';
 
@@ -106,3 +107,7 @@ export default class Login extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    updateUser: PropTypes.func,
+};
