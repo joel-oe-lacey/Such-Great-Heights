@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './Login.scss';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { FormErrors } from './FormErrors';
 
 export default class Login extends Component {
@@ -9,6 +10,7 @@ export default class Login extends Component {
         this.state = {
             name:'',
             email:'',
+            travelingFor: 'business',
             formErrors: { name: 'Please enter a name', email: 'Please enter an email'},
             nameValid: false,
             emailValid: false,
@@ -19,7 +21,7 @@ export default class Login extends Component {
 
     submitForm = e => {
         const { updateUser } = this.props;
-        updateUser(this.state.name);
+        updateUser(this.state.name, this.state.travelingFor);
     }
 
     validateField = e => {
@@ -40,9 +42,7 @@ export default class Login extends Component {
                 break;
         }
 
-        //call validate form from within this
-        //could also do this inline with an || operator to check state or current value  
-        this.setState({ 
+        this.setState({
                 [inputName]: value,
                 formErrors: fieldPresentErr,
                 emailValid,
@@ -59,10 +59,6 @@ export default class Login extends Component {
         this.setState({ errorsDisp: true })
     }
 
-    //need a function on button click that does validation based on the state
-
-    //if formValid is false on click, render error messages
-    //
     render() {
         const submitBtn = this.state.formValid ? <NavLink to='/areas' className='log-in-btn' onClick={this.submitForm}>Submit</NavLink> : <button className='log-in-btn' onClick={this.showErrors}>Submit</button>;
 
@@ -95,9 +91,9 @@ export default class Login extends Component {
                         autoFocus={this.state.travelingFor}
                         onChange={this.validateField}
                     >
-                        <option value="business">Business</option>
+                        <option value="business trip">Business</option>
                         <option value="vacation">Vacation</option>
-                        <option value="other">Other</option>
+                        <option value="trip">Other</option>
                     </select>
                     {errors}
                     {submitBtn}
@@ -106,3 +102,7 @@ export default class Login extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    updateUser: PropTypes.func,
+};

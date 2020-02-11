@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import './AreaContainer.scss'
 import Area from '../Area/Area'
 import Listing from '../Listing/Listing.js'
+import PropTypes from 'prop-types';
 
 const AreaContainer = (props) => {
     let cards;
     if (!props.listings) {
     cards = props.data.map(area => {
       return <Area
+      key={area.id}
       id={area.id}
       shortName={area.shortName}
       name={area.name}
@@ -16,7 +18,7 @@ const AreaContainer = (props) => {
     })
     } else {
     cards = props.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} area_id={listing.area_id} />
+      return <Listing key={listing.id} id={listing.id} name={listing.name} area_id={listing.area_id} />
     })
     }
 
@@ -34,3 +36,8 @@ const AreaContainer = (props) => {
   }
 
   export default AreaContainer;
+
+  AreaContainer.propTypes = {
+    data: PropTypes.array,
+    tripType: PropTypes.string,
+};

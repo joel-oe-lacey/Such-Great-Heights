@@ -1,6 +1,8 @@
 import React from 'react';
 import './Listing.scss'
 import { NavLink } from "react-router-dom";
+import PropTypes from 'prop-types';
+
 
 const Listing = ({ id, name, area_id }) => {
     return (
@@ -15,3 +17,9 @@ const Listing = ({ id, name, area_id }) => {
 }
 
 export default Listing;
+
+Listing.propTypes = {
+  id: PropTypes.number,
+  name: PropTypes.string,
+  area_id: PropTypes.number
+};
