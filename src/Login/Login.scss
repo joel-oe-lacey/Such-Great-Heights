@@ -84,3 +84,13 @@
   padding-top: 5%;
   padding-bottom: 5%;
 }
+
+.form-errors {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
+  p {
+    color: #FFD6BA;
+  }
+}
