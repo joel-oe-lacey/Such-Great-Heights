@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Login should equal snapshot  1`] = `
+<section
+  className="login-container"
+>
+  <form
+    className="login-form"
+  >
+    <h1
+      className="login-welcome"
+    >
+      Login
+    </h1>
+    <input
+      className="name-input"
+      name="name"
+      onChange={[Function]}
+      placeholder="Name..."
+      type="text"
+      value=""
+    />
+    <input
+      className="email-input"
+      name="email"
+      onChange={[Function]}
+      placeholder="Email..."
+      type="text"
+      value=""
+    />
+    <label
+      className="type-label"
+    >
+      Reason for Traveling
+    </label>
+    <select
+      className="travel-input"
+      name="travelingFor"
+      onChange={[Function]}
+    >
+      <option
+        value="business"
+      >
+        Business
+      </option>
+      <option
+        value="vacation"
+      >
+        Vacation
+      </option>
+      <option
+        value="other"
+      >
+        Other
+      </option>
+    </select>
+    <button
+      className="log-in-btn"
+      onClick={[Function]}
+    >
+      Submit
+    </button>
+  </form>
+</section>
+`;

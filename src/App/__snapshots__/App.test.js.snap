@@ -6,9 +6,9 @@ exports[`App should match the snapshot 1`] = `
 >
   <Switch>
     <Route
-      component={[Function]}
       exact={true}
       path="/"
+      render={[Function]}
     />
     <Route
       path="/"

@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Carousel Should equal snapshot 1`] = `
+<section
+  className="carousel"
+>
+  <img
+    alt="test text"
+    className="images"
+    src="/../../images/8_a.jpg"
+  />
+  <Arrow
+    changeImg={[Function]}
+    direction="left"
+  />
+  <Arrow
+    changeImg={[Function]}
+    direction="right"
+  />
+</section>
+`;
