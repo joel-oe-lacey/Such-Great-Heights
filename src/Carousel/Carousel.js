@@ -19,7 +19,7 @@ export default class Carousel extends Component {
         } else {
             newIndex = imageIndex === 2 ? 0 : imageIndex + 1;
         }
-        
+
         this.setState({
             imageIndex: newIndex
         });
@@ -27,7 +27,7 @@ export default class Carousel extends Component {
 
     render() {
         return <section className="carousel">
-            <img src={`/../../images/${this.props.id}_${this.props.imgTags[this.state.imageIndex]}.jpg`} alt={this.props.name}/>
+            <img className='images' src={`/../../images/${this.props.id}_${this.props.imgTags[this.state.imageIndex]}.jpg`} alt={this.props.name}/>
             <Arrow direction="left" changeImg={this.changeImg} />
             <Arrow direction="right" changeImg={this.changeImg} />
         </section>

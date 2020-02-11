@@ -34,7 +34,8 @@
 }
 
 .view-areas-btn,
-.log-out-btn {
+.log-out-btn,
+.view-favorites-btn {
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
   font-size: 1em;
@@ -43,5 +44,6 @@
   border-radius: 4px;
   background-color: #FAF9F9;
   cursor: pointer;
+  padding: 5px;
 
 }
