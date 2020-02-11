@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Login from './Login/Login';
+import Login from './Login';
 
 describe('Login', () => {
     it('should equal snapshot ', () => {
@@ -9,8 +9,8 @@ describe('Login', () => {
     });
 
     //need to test
-    //use instance and mocks 
-    //take listing from details 
+    //use instance and mocks
+    //take listing from details
         //create a separate mock data file?
     //componentDidMount need to mock fetch
 
@@ -18,6 +18,6 @@ describe('Login', () => {
     //updateUser
     //addFavorite
 
-    
+
 
 })

@@ -1,0 +1,80 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Details should equal snapshot  1`] = `
+<div
+  className="details-container"
+>
+  <section
+    className="details-card"
+  >
+    <Carousel
+      className="carousel"
+      id={2}
+      imgTags={
+        Array [
+          "a",
+          "b",
+          "c",
+        ]
+      }
+      name="The Other House"
+    />
+    <button
+      className="details-fav"
+      onClick={[Function]}
+    >
+      Add Favorite
+    </button>
+    <button
+      className="details-unfav"
+      onClick={[Function]}
+    >
+      Remove Favorite
+    </button>
+    <ul
+      className="details-info"
+    >
+      <h3
+        className="details-list"
+      >
+        The Other House
+      </h3>
+      <h4
+        className="details-list"
+      >
+        1800 Safe Way, 80202
+      </h4>
+      <li
+        className="details-list"
+      >
+        Number of bedrooms: 3
+      </li>
+      <li
+        className="details-list"
+      >
+        Number of bathrooms: 2.5
+      </li>
+      <li
+        className="details-list"
+      >
+        Cost per night: $420
+      </li>
+      <h4
+        className="unique-features"
+      >
+         Unique Features
+        <ul
+          className="unique-features"
+        >
+          <li>
+            hot tub
+          </li>
+          <li>
+            espresso machine
+          </li>
+        </ul>
+      </h4>
+    </ul>
+  </section>
+</div>
+`;

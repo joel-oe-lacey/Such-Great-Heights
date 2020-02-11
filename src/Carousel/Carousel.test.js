@@ -1,6 +1,6 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import Carousel from './Carousel/Carousel';
+import Carousel from './Carousel';
 
 describe('Carousel', () => {
     let wrapper;
@@ -19,7 +19,7 @@ describe('Carousel', () => {
 
         wrapper.instance().changeImg('left');
 
-        expect(wrapper.state('imageIndex')).toEqual(3);
+        expect(wrapper.state('imageIndex')).toEqual(2);
     });
 
     it('Should add to image index for right click', () => {
