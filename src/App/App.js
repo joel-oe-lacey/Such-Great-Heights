@@ -50,8 +50,8 @@ export default class App extends Component {
     return (
       <section className="app">
       <Switch>
-        <Route exact path='/' component={Login} />
-        <Route path='/' render={() =>  <Nav userName={this.state.name}/>} />
+        <Route exact path='/' render={() => <Login updateUser={this.updateUser} />} />
+        <Route path='/' render={() =>  <Nav userName={this.state.name} />} />
       </Switch>
         <Route exact path='/areas' render={() =>
           <AreaContainer data={this.state.areas} tripType={this.state.tripType} />} />
