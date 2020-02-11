@@ -7,7 +7,8 @@ import Carousel from '../Carousel/Carousel'
 
 const Details = ({ listings, match, addFavorite, removeFavorite })=> {
     const listing = listings.find(listing => listing.id === parseInt(match.params.listing_id))
-    const { id, name, details: { address, beds, baths, cost_per_night, features }} = listing;
+    //below is undefined handling, if no listing is available, use empty data from listings
+    const { id, name, details: { address, beds, baths, cost_per_night, features }} = listing ? listing : listings[0];
 
     const uniqueFeatures = features.map(feature => {
         return <li>{feature}</li>

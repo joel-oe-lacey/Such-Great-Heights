@@ -26,9 +26,8 @@ export default class Carousel extends Component {
     }
 
     render() {
-        console.log(`../../images/${this.props.id}_${this.props.imgTags[this.state.imageIndex]}.jpg`)
         return <section className="carousel">
-            <img src={`../../images/8_a.jpg`} alt={this.props.name}/>
+            <img src={`/../../images/${this.props.id}_${this.props.imgTags[this.state.imageIndex]}.jpg`} alt={this.props.name}/>
             <Arrow direction="left" changeImg={this.changeImg} />
             <Arrow direction="right" changeImg={this.changeImg} />
         </section>
