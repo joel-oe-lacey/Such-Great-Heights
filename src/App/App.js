@@ -69,7 +69,7 @@ export default class App extends Component {
           return <AreaContainer listings={areaListings} tripType={this.state.tripType} />
           }
         } />
-        }
+    
         <Route exact path='/areas/:area_id/listings/:listing_id' render={({ match }) => {
           return <Details addFavorite={this.addFavorite} removeFavorite={this.removeFavorite} listings={this.state.listings} match={match}/>
           }
