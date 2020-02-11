@@ -9,6 +9,7 @@ const AreaContainer = (props) => {
     if (!props.listings) {
     cards = props.data.map(area => {
       return <Area
+      key={area.id}
       id={area.id}
       shortName={area.shortName}
       name={area.name}
@@ -17,7 +18,7 @@ const AreaContainer = (props) => {
     })
     } else {
     cards = props.listings.map(listing => {
-      return <Listing id={listing.id} name={listing.name} area_id={listing.area_id} />
+      return <Listing key={listing.id} id={listing.id} name={listing.name} area_id={listing.area_id} />
     })
     }
 
