@@ -15,7 +15,7 @@ export default class App extends Component {
       name: 'user1',
       tripType: 'vacation',
       areas: [],
-      listings: [],
+      listings: [{ "id": 1, "area_id": 1, "name":'', "details": {"features": [] } }],
       favorites: []
     };
   }
