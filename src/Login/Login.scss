@@ -21,6 +21,7 @@
   '. email .'
   '. type-label .'
   '. travel .'
+  '. errors .'
   '. login-button .';
 
 
@@ -67,12 +68,13 @@
 
 
 .link-btn {
-  grid-area: login-button;
+  // grid-area: login-button;
   justify-self: center;
   // align-self: center;
 
 }
 .log-in-btn {
+  grid-area: login-button;
   border-radius: 4px;
   font-family: 'Work Sans', sans-serif;
   font-weight: 700;
@@ -86,6 +88,7 @@
 }
 
 .form-errors {
+  grid-area: errors;
   display: flex;
   flex-direction: column;
   align-items: center;

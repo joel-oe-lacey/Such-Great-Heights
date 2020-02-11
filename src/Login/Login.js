@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { FormErrors } from './FormErrors';
 
 export default class Login extends Component {
@@ -64,7 +64,7 @@ export default class Login extends Component {
     //if formValid is false on click, render error messages
     //
     render() {
-        const submitBtn = this.state.formValid ? <Link to='/areas' className='log-in-btn'><button className='log-in-btn' onClick={this.submitForm}>Submit</button></Link> : <button className='log-in-btn' onClick={this.showErrors}>Submit</button>;
+        const submitBtn = this.state.formValid ? <NavLink to='/areas' className='log-in-btn' onClick={this.submitForm}>Submit</NavLink> : <button className='log-in-btn' onClick={this.showErrors}>Submit</button>;
 
         const errors = this.state.errorsDisp ? <FormErrors formErrors={this.state.formErrors} /> : '';
 
