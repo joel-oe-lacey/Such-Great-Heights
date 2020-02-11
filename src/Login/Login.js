@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import './Login.scss';
 import { Link } from 'react-router-dom'
+import PropTypes from 'prop-types';
+
+
 
 export default class Login extends Component {
     constructor() {
@@ -91,3 +94,7 @@ export default class Login extends Component {
         )
     }
 }
+
+Login.propTypes = {
+    updateUser: PropTypes.func,
+};

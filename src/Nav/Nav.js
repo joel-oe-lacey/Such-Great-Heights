@@ -1,6 +1,8 @@
 import React from 'react';
 import './Nav.scss'
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types';
+
 
 
 const Nav = ({ userName }) => {
@@ -16,3 +18,7 @@ const Nav = ({ userName }) => {
 }
 
 export default Nav;
+
+Nav.propTypes = {
+  userName: PropTypes.string,
+};
