@@ -2,6 +2,8 @@ import React from 'react';
 import { render } from '@testing-library/react';
 import App from './App.js';
 import { shallow } from 'enzyme';
+import { fetchAreasData, fetchListings, fetchData } from '../helpers.js';
+
 
 
 describe ('App', ()=> {
@@ -41,7 +43,14 @@ describe ('App', ()=> {
     let updatedState = {
       areas: [],
       favorites: [],
-      listings:[],
+      listings:[{
+       area_id: 1,
+         details: {
+           features: [],
+       },
+           id: 1,
+           name: "",
+         }],
       name: "user1",
       tripType: "vacation",
     }
@@ -53,7 +62,9 @@ describe ('App', ()=> {
   it('should update state.name when updateUser is invoked', () => {
     wrapper.instance().setState({});
     wrapper.instance().updateUser('user123');
-    expect(wrapper.state()).toEqual({areas: [], favorites: [], listings: [], name: 'user123', tripType: 'vacation'})
+    expect(wrapper.state()).toEqual({areas: [], favorites: [], listings: [{area_id: 1,details: {features: [], }, id: 1,name: "", }], name: 'user123', tripType: 'vacation'})
   })
+
+
 
 })
