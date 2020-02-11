@@ -1,8 +1,11 @@
 import React from 'react';
 import './Area.scss';
 import { NavLink } from 'react-router-dom';
+import PropTypes from 'prop-types';
+
 
 const Area = (props) => {
+  console.log(props);
     return (
         <div className='area-card'>
           <h2 className='short-name'>{props.shortName}</h2>
@@ -14,3 +17,10 @@ const Area = (props) => {
 }
 
 export default Area;
+
+Area.propTypes = {
+  id: PropTypes.number,
+  shortName: PropTypes.string,
+  name: PropTypes.string,
+  description: PropTypes.string
+};
