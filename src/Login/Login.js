@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import './Login.scss';
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types';
-
-
+import { Link } from 'react-router-dom';
+import { FormErrors } from './FormErrors';
 
 export default class Login extends Component {
     constructor() {
@@ -11,52 +10,65 @@ export default class Login extends Component {
         this.state = {
             name:'',
             email:'',
-            travelingFor:'business'
+            formErrors: { name: 'Please enter a name', email: 'Please enter an email'},
+            nameValid: false,
+            emailValid: false,
+            formValid: false,
+            errorsDisp: false
         }
     }
 
-    handleChange = e => {
-        const itemChanged = e.target.name;
-        this.setState({
-            [itemChanged]: e.target.value,
-            errors: {
-                [itemChanged]: this.state[itemChanged].length ? false : true,
-                ...this.state.errors
-
-                //swap error handling to
-            },
-            // ...this.state
-        })
-
-        //wont work as it erases other state
-        //need to pull in other state and also set the related error to false
-
-        //to type val based on e.target.name
-
-
-        //make sure a value is entered
-        //then in submit form can check if empty
-    }
-
     submitForm = e => {
-        //run validation in here, check state, if entered run below, else change placeholder (keep placeholder value in state?)
-        e.preventDefault();
         const { updateUser } = this.props;
-        updateUser(this.state.user);
-        this.resetInputs();
+        updateUser(this.state.name);
     }
 
-    resetInputs = () => {
-        this.setState({
-            name: '',
-            email: '',
-            travelingFor: 'business'
-        })
+    validateField = e => {
+        let inputName = e.target.name;
+        let value = e.target.value
+        let fieldPresentErr = this.state.formErrors;
+        let emailValid = this.state.emailValid;
+        let nameValid = this.state.nameValid;
+
+        switch (inputName) {
+            case 'name':
+                nameValid = value;
+                fieldPresentErr.name = nameValid ? '' : 'Please enter a name';
+                break;
+            default:
+                emailValid = value;
+                fieldPresentErr.email = emailValid ? '' : 'Please enter an email';
+                break;
+        }
+
+        //call validate form from within this
+        //could also do this inline with an || operator to check state or current value  
+        this.setState({ 
+                [inputName]: value,
+                formErrors: fieldPresentErr,
+                emailValid,
+                nameValid
+        }, this.validateForm)
+    }
+
+    validateForm = () => {
+        this.setState({ formValid: this.state.emailValid && this.state.nameValid });
+    }
+
+    showErrors = e => {
+        e.preventDefault();
+        this.setState({ errorsDisp: true })
     }
 
     //need a function on button click that does validation based on the state
 
+    //if formValid is false on click, render error messages
+    //
     render() {
+        const submitBtn = this.state.formValid ? <Link to='/areas' className='log-in-btn'><button className='log-in-btn' onClick={this.submitForm}>Submit</button></Link> : <button className='log-in-btn' onClick={this.showErrors}>Submit</button>;
+
+        const errors = this.state.errorsDisp ? <FormErrors formErrors={this.state.formErrors} /> : '';
+
         return (
             <section className="login-container">
                 <form className="login-form">
@@ -67,7 +79,7 @@ export default class Login extends Component {
                         name="name"
                         placeholder="Name..."
                         value={this.state.name}
-                        onChange={this.handleChange}
+                        onChange={this.validateField}
                     />
                     <input
                         className='email-input'
@@ -75,20 +87,21 @@ export default class Login extends Component {
                         name="email"
                         placeholder="Email..."
                         value={this.state.email}
-                        onChange={this.handleChange}
+                        onChange={this.validateField}
                     />
                     <label className='type-label'>Reason for Traveling</label>
                     <select
                         className='travel-input'
                         name="travelingFor"
                         autoFocus={this.state.travelingFor}
-                        onChange={this.handleChange}
+                        onChange={this.validateField}
                     >
                         <option value="business">Business</option>
                         <option value="vacation">Vacation</option>
                         <option value="other">Other</option>
                     </select>
-                    <Link to='/areas' className='link-btn'><button className='log-in-btn'>Submit</button></Link>
+                    {errors}
+                    {submitBtn}
                 </form>
             </section>
         )
