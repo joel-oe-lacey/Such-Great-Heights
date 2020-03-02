@@ -1,13 +1,15 @@
 .area-card-container {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   justify-content: center;
-  // border: 2px solid red;
   background-color: #89B0AE;
-  height: 100vh;
+  height: 100%;
+  overflow: scroll;
   font-family: 'Work Sans', sans-serif;
+}
 
+.area-full-disp {
+  height: 92%;
 }
 
 .welcome-message {

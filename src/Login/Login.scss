@@ -23,8 +23,6 @@
   '. travel .'
   '. errors .'
   '. login-button .';
-
-
 }
 
 .login-welcome {
@@ -32,29 +30,22 @@
   font-size: 2em;
   border-bottom: 2px solid #FFD6BA;
   align-self: flex-end;
-
 }
+
 .name-input {
   grid-area: name;
-  height: 40%;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 1em;
-  height: 40%;
-  align-self: center;
-
 }
+
 .email-input {
   grid-area: email;
-  font-family: 'Work Sans', sans-serif;
-  font-size: 1em;
-  height: 40%;
-  align-self: center;
 }
+
 .type-label {
   grid-area: type-label;
   align-self: flex-end;
   font-weight: 700;
 }
+
 .travel-input {
   grid-area: travel;
   align-self: flex-start;
@@ -63,7 +54,6 @@
   height: 40%;
   align-self: center;
   cursor: pointer;
-
 }
 
 .log-in-btn {
@@ -92,5 +82,20 @@
   
   p {
     color: #FFD6BA;
+  }
+}
+
+input {
+  transition: box-shadow 300ms;
+  height: 50%;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1em;
+  height: 40%;
+  align-self: center;
+
+  &:focus {
+    outline: none;
+    border: none;
+    box-shadow: 0.1rem 0.3rem 0.6rem black;
   }
 }

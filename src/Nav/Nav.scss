@@ -2,7 +2,7 @@
   font-family: 'Work Sans', sans-serif;
   height: 8%;
   display: grid;
-  grid-template-columns: 10% auto 20% 10% 10%;
+  grid-template-columns: 10% auto auto 10% 10%;
   grid-template-areas: 'logo . username view-areas log-out';
   align-items: center;
   grid-column-gap: 1%;
@@ -12,10 +12,9 @@
 
 .logo-nav {
   grid-area: logo;
-  height: 80%;
-  width: 60%;
+  height: 100%;
+  width: 100%;
   justify-self: end;
-  background-color: #BEE3DB;
 }
 
 .username {
