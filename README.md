@@ -11,4 +11,6 @@ Issues are open representing pieces of the iterations we did completely finish o
 - Become more famililar with nested fetch requests, working with Promises, and handling the UI based on changing data
 
 #### Screenshots 
-coming soon! 
+![Areas](./public/areas.png)
+![Listings](./public/listings.png)
+![Details](./public/details.png)
